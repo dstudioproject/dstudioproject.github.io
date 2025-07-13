@@ -6,30 +6,43 @@
   <title>DSTUDIO PROJECT</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Share Tech Mono', monospace;
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
+    :root {
+      --bg-dark: #000;
+      --bg-light: #f5f5f5;
+      --text-dark: #fff;
+      --text-light: #181818;
+      --shadow-glow: 0 0 15px red;
+    }
+    html, body {
+      margin: 0; padding: 0; box-sizing: border-box;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background 0.5s, color 0.5s;
+    }
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
     }
     video#bg-video {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       object-fit: cover;
       z-index: -2;
+      pointer-events: none;
     }
     .fade-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.4);
       z-index: -1;
+      pointer-events: none;
+      transition: background 0.5s;
+    }
+    body.light-mode .fade-overlay {
+      background: rgba(255,255,255,0.18);
     }
     .hero-container {
       padding: 100px 20px 60px;
@@ -38,17 +51,17 @@
     }
     .glow-circle {
       position: absolute;
-      top: 30px;
-      left: 50%;
-      width: 100px;
-      height: 100px;
+      top: 30px; left: 50%;
+      width: 100px; height: 100px;
       background: radial-gradient(#ff0000, transparent);
       border-radius: 50%;
       transform: translateX(-50%);
       opacity: 0.2;
       z-index: 1;
+      pointer-events: none;
     }
-    .svg-blood-wrap {
+    /* Judul dengan SVG mask glitch */
+    .svg-mask-title-wrap {
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -57,35 +70,41 @@
       margin-bottom: 0;
       z-index: 15;
       pointer-events: none;
-      height: 130px;
-      /* adjust height as needed */
+      height: 110px;
     }
-    .svg-blood {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 720px;
-      max-width: 96vw;
-      height: 130px;
-      pointer-events: none;
-      z-index: 12;
-      filter: drop-shadow(0 16px 32px #d00a);
-    }
-    .blood-title {
-      display: block;
-      position: relative;
+    .svg-mask-title {
       font-family: 'Playfair Display', serif;
       font-size: 64px;
       letter-spacing: 4px;
       color: #fff;
       text-align: center;
       margin: 0 auto;
-      text-shadow: 0 0 15px red;
+      position: relative;
+      text-shadow: var(--shadow-glow);
       z-index: 20;
       background: transparent;
       line-height: 1;
-      /* To keep text above SVG */
+      -webkit-mask: url(#glitchMask);
+      mask: url(#glitchMask);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      transition: color 0.4s, text-shadow 0.4s;
+    }
+    body.light-mode .svg-mask-title {
+      color: #1a1a1a;
+      text-shadow: 0 0 15px #ff4c4c;
+    }
+    .svg-glitch {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 650px;
+      height: 110px;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 19;
     }
     .subtitle {
       text-align: center;
@@ -95,10 +114,77 @@
       margin-top: -8px;
       z-index: 10;
       position: relative;
+      font-family: 'Share Tech Mono', monospace;
     }
+    /* Typing effect */
+    .typing {
+      display: inline-block;
+      border-right: 2px solid #ff3c3c;
+      white-space: nowrap;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      color: #ff3c3c;
+      animation: typing-glow 1.5s infinite alternate;
+      background: rgba(0,0,0,0.32);
+      padding: 2px 5px 2px 3px;
+      margin-bottom: 18px;
+      min-height: 28px;
+      min-width: 200px;
+      box-shadow: 0 0 12px #9002;
+    }
+    @keyframes typing-glow {
+      0% { text-shadow: 0 0 6px #f33; }
+      100% { text-shadow: 0 0 16px #f33; }
+    }
+    /* Particle */
+    #particle-canvas {
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.7;
+      transition: opacity 0.5s;
+    }
+    /* Day/night toggle */
+    .mode-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      background: #111;
+      color: #fff;
+      border-radius: 50%;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; cursor: pointer;
+      border: 2px solid #333;
+      box-shadow: 0 2px 12px #0007;
+      transition: background 0.3s, color 0.3s, border 0.3s;
+      user-select: none;
+    }
+    .mode-toggle:hover {
+      background: #fff;
+      color: #d00;
+      border: 2px solid #ff3c3c;
+    }
+    body.light-mode .mode-toggle {
+      background: #fff;
+      color: #d00;
+      border: 2px solid #ff3c3c;
+    }
+    /* Hide audio controls by default but keep accessible */
+    #heartbeat-audio {
+      position: absolute;
+      left: -9999px; top: -9999px;
+      width: 1px; height: 1px;
+    }
+
     @media (max-width: 700px) {
-      .svg-blood, .svg-blood-wrap { height: 68px; }
-      .blood-title { font-size: 32px; }
+      .svg-mask-title, .blood-title { font-size: 28px; }
+      .svg-mask-title-wrap { height: 48px; }
+      .svg-glitch { width: 96vw; height: 48px; }
     }
     section {
       max-width: 900px;
@@ -120,11 +206,16 @@
       font-size: 15px;
       line-height: 1.8;
     }
+    body.light-mode .about p {
+      background: rgba(255,255,255,0.62);
+      color: #181818;
+    }
     p {
       font-size: 14px;
       line-height: 1.7;
       color: #d0d0d0;
     }
+    body.light-mode p { color: #181818; }
     .link-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -144,6 +235,11 @@
       background: #ff3c3c;
       color: black;
       font-weight: bold;
+    }
+    body.light-mode .link-grid a {
+      background: #fff;
+      color: #d00;
+      border: 1px solid #ff3c3c;
     }
     .grid-3col {
       display: grid;
@@ -165,6 +261,9 @@
       color: #fff;
       text-decoration: underline;
     }
+    body.light-mode .awards ul li a {
+      color: #d00;
+    }
     footer {
       text-align: center;
       padding: 60px 20px;
@@ -172,6 +271,7 @@
       color: #777;
       border-top: 1px solid #222;
     }
+    body.light-mode footer { color: #333; border-top: 1px solid #ff3c3c; }
   </style>
 </head>
 <body>
@@ -179,57 +279,36 @@
     <source src="dstudio_eye.mp4" type="video/mp4" />
   </video>
   <div class="fade-overlay"></div>
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  <!-- Heartbeat ambient audio -->
+  <audio id="heartbeat-audio" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12c2c1a4b6.mp3" preload="auto" loop></audio>
+  <!-- SVG Mask/Glitch Title -->
   <div class="hero-container">
     <div class="glow-circle"></div>
-    <div class="svg-blood-wrap">
-      <span class="blood-title">DSTUDIO PROJECT</span>
-      <svg class="svg-blood" viewBox="0 0 720 130" width="720" height="130">
+    <div class="svg-mask-title-wrap">
+      <span class="svg-mask-title">DSTUDIO PROJECT</span>
+      <!-- SVG Mask Def -->
+      <svg class="svg-glitch" width="650" height="110" viewBox="0 0 650 110" style="position:absolute;top:0;left:50%;transform:translateX(-50%);" aria-hidden="true">
         <defs>
-          <linearGradient id="bloodRed" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#ff3939"/>
-            <stop offset="90%" stop-color="#a80000"/>
-            <stop offset="100%" stop-color="#800000"/>
-          </linearGradient>
+          <mask id="glitchMask" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="650" height="110" fill="#fff"/>
+            <g id="glitch-lines">
+              <rect x="0" y="35" width="650" height="8" fill="#000"/>
+              <rect x="0" y="65" width="650" height="6" fill="#000"/>
+              <rect x="50" y="50" width="180" height="6" fill="#000"/>
+              <rect x="400" y="80" width="120" height="7" fill="#000"/>
+            </g>
+            <animate xlink:href="#glitch-lines" attributeName="y" values="0;10;-10;0" dur="1.2s" repeatCount="indefinite"/>
+          </mask>
         </defs>
-        <path id="blood-path"
-          fill="url(#bloodRed)" fill-opacity="0.95" stroke="#a80000" stroke-width="2"
-          d="M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-            Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
-            Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z">
-          <animate 
-            attributeName="d"
-            dur="2.8s"
-            repeatCount="indefinite"
-            keyTimes="0;0.35;0.55;0.7;1"
-            values="
-              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-                Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
-                Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z;
-
-              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-                Q715,60 700,90 Q685,120 680,100 Q670,110 660,115 Q650,105 640,120 Q630,115 620,100 Q610,110 600,90 Q590,85 585,110
-                Q570,120 560,110 Q555,85 550,100 Q530,110 520,120 Q510,110 500,115 Q480,110 470,120 Q460,115 450,100 Q437,90 420,110 Q410,120 400,115 Q390,100 380,120 Q370,110 360,100 Q350,115 340,120 Q330,115 320,100 Q310,110 300,120 Q290,110 280,100 Q270,120 260,110 Q250,100 240,120 Q230,110 220,115 Q210,100 200,110 Q190,120 180,115 Q170,100 160,120 Q150,110 140,100 Q135,120 130,115 Q120,100 110,110 Q100,120 90,115 Q80,100 70,120 Q60,110 50,100 Q40,120 0,110 Z;
-
-              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-                Q715,115 700,130 Q685,130 680,118 Q670,130 660,130 Q650,120 640,130 Q630,130 620,130 Q610,120 600,130 Q590,130 585,130
-                Q570,130 560,130 Q555,110 550,130 Q530,130 520,130 Q510,130 500,130 Q480,130 470,130 Q460,130 450,130 Q437,130 420,130 Q410,130 400,130 Q390,130 380,130 Q370,130 360,130 Q350,130 340,130 Q330,130 320,130 Q310,130 300,130 Q290,130 280,130 Q270,130 260,130 Q250,130 240,130 Q230,130 220,130 Q210,130 200,130 Q190,130 180,130 Q170,130 160,130 Q150,130 140,130 Q135,130 130,130 Q120,130 110,130 Q100,130 90,130 Q80,130 70,130 Q60,130 50,130 Q40,130 0,130 Z;
-
-              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-                Q715,60 700,90 Q685,120 680,100 Q670,110 660,115 Q650,105 640,120 Q630,115 620,100 Q610,110 600,90 Q590,85 585,110
-                Q570,120 560,110 Q555,85 550,100 Q530,110 520,120 Q510,110 500,115 Q480,110 470,120 Q460,115 450,100 Q437,90 420,110 Q410,120 400,115 Q390,100 380,120 Q370,110 360,100 Q350,115 340,120 Q330,115 320,100 Q310,110 300,120 Q290,110 280,100 Q270,120 260,110 Q250,100 240,120 Q230,110 220,115 Q210,100 200,110 Q190,120 180,115 Q170,100 160,120 Q150,110 140,100 Q135,120 130,115 Q120,100 110,110 Q100,120 90,115 Q80,100 70,120 Q60,110 50,100 Q40,120 0,110 Z;
-
-              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
-                Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
-                Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z
-            "
-          />
-        </path>
+        <rect x="0" y="0" width="650" height="110" fill="#fff" mask="url(#glitchMask)"/>
       </svg>
     </div>
     <p class="subtitle">AI Director • Worldbuilder</p>
   </div>
   <section class="about">
-    <h2>_WHO IS DSTUDIO?_</h2>
+    <h2 id="who-title"><span class="typing"></span></h2>
     <p>
       Dstudioproject is a creative signal intercepted from the edge of imagination.<br>
       A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
@@ -277,5 +356,109 @@
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
   </footer>
+  <!-- Day/Night Button -->
+  <div class="mode-toggle" id="modeToggle" title="Toggle Dark/Light Mode">🌙</div>
+  <script>
+    // 1. Typing effect "WHO IS DSTUDIO?"
+    const typingSpan = document.querySelector('.typing');
+    const typingText = 'WHO IS DSTUDIO?';
+    let typingIdx = 0, typingGlitchCount = 0;
+    function typeWriter() {
+      if (typingIdx <= typingText.length) {
+        typingSpan.textContent = typingText.slice(0, typingIdx) + (Math.random() < 0.12 && typingIdx > 4 ? String.fromCharCode(65 + Math.random()*26|0) : '');
+        typingIdx++;
+        setTimeout(typeWriter, 70 + Math.random()*50);
+      } else {
+        // Glitch effect after finish
+        setTimeout(() => {
+          let old = typingSpan.textContent;
+          typingSpan.textContent = typingText.replace(/[A-Z]/g, l=>Math.random()<0.18 ? String.fromCharCode(65+Math.random()*26|0):l);
+          setTimeout(()=>{typingSpan.textContent = typingText;}, 160);
+        }, 330);
+      }
+    }
+    typeWriter();
+
+    // 2. Heartbeat sound ambient
+    const heartbeat = document.getElementById('heartbeat-audio');
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(()=>heartbeat.volume=0.13,400);
+      heartbeat.play().catch(()=>{}); // Autoplay policy: Interact to unmute
+    });
+    document.body.addEventListener('click',()=>{heartbeat.play().catch(()=>{});}, {once:true});
+
+    // 3. SVG Mask Title (already in HTML/CSS)
+
+    // 4. Particle Effect: huruf acak beterbangan
+    // Simple letter particles
+    const particleCanvas = document.getElementById('particle-canvas');
+    let ctx = particleCanvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() {
+      particleCanvas.width = window.innerWidth;
+      particleCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function randomChar() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      return chars[Math.random()*chars.length|0];
+    }
+    function spawnParticle() {
+      const w = particleCanvas.width, h = particleCanvas.height;
+      return {
+        x: Math.random()*w,
+        y: Math.random()*h*0.7,
+        size: 13 + Math.random()*11,
+        char: randomChar(),
+        speedX: -0.02 + Math.random()*0.04,
+        speedY: -0.06 + Math.random()*0.13,
+        alpha: 0.19+Math.random()*0.32,
+        color: Math.random()<0.8 ? "#ff3c3c" : "#fff"
+      };
+    }
+    for(let i=0;i<44;i++) particles.push(spawnParticle());
+
+    function animateParticles() {
+      ctx.clearRect(0,0,particleCanvas.width,particleCanvas.height);
+      for(let p of particles){
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.font = p.size+"px Share Tech Mono,monospace";
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = p.color;
+        ctx.fillText(p.char, p.x, p.y);
+        ctx.restore();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.alpha -= 0.0008+Math.random()*0.0007;
+        if (p.y < 0 || p.x < 0 || p.x > particleCanvas.width || p.alpha < 0.05) {
+          Object.assign(p, spawnParticle());
+          p.y = particleCanvas.height + 30*Math.random();
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // 5. Mode siang/malam
+    const modeToggle = document.getElementById('modeToggle');
+    const updateModeIcon = () => {
+      modeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+    }
+    modeToggle.onclick = function() {
+      document.body.classList.toggle('light-mode');
+      updateModeIcon();
+    };
+    updateModeIcon();
+
+    // Optional: Pause heartbeat audio when not visible for performance
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden) heartbeat.pause();
+      else heartbeat.play().catch(()=>{});
+    });
+  </script>
 </body>
 </html>
