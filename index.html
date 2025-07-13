@@ -6,191 +6,84 @@
   <title>DSTUDIO PROJECT</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #000;
-      --bg-light: #f5f5f5;
-      --text-dark: #fff;
-      --text-light: #181818;
-      --shadow-glow: 0 0 15px red;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    html, body {
-      margin: 0; padding: 0; box-sizing: border-box;
-      min-height: 100vh;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background 0.5s, color 0.5s;
+
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
     }
-    body.light-mode {
-      background: var(--bg-light);
-      color: var(--text-light);
-    }
+
     video#bg-video {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -2;
-      pointer-events: none;
     }
+
     .fade-overlay {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.4);
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
-      pointer-events: none;
-      transition: background 0.5s;
     }
-    body.light-mode .fade-overlay {
-      background: rgba(255,255,255,0.18);
-    }
-    .hero-container {
-      padding: 100px 20px 60px;
-      position: relative;
-      z-index: 10;
-    }
-    .glow-circle {
-      position: absolute;
-      top: 30px; left: 50%;
-      width: 100px; height: 100px;
-      background: radial-gradient(#ff0000, transparent);
-      border-radius: 50%;
-      transform: translateX(-50%);
-      opacity: 0.2;
-      z-index: 1;
-      pointer-events: none;
-    }
-    /* Judul dengan SVG mask glitch */
-    .svg-mask-title-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      position: relative;
-      width: 100%;
-      margin-bottom: 0;
-      z-index: 15;
-      pointer-events: none;
-      height: 110px;
-    }
-    .svg-mask-title {
+
+    h1 {
       font-family: 'Playfair Display', serif;
+      text-align: center;
       font-size: 64px;
       letter-spacing: 4px;
-      color: #fff;
-      text-align: center;
-      margin: 0 auto;
+      margin-top: 60px;
+      color: #ffffff;
       position: relative;
-      text-shadow: var(--shadow-glow);
-      z-index: 20;
-      background: transparent;
-      line-height: 1;
-      -webkit-mask: url(#glitchMask);
-      mask: url(#glitchMask);
-      -webkit-mask-size: 100% 100%;
-      mask-size: 100% 100%;
-      -webkit-mask-repeat: no-repeat;
-      mask-repeat: no-repeat;
-      transition: color 0.4s, text-shadow 0.4s;
+      z-index: 2;
+      text-shadow: 0 0 15px red;
     }
-    body.light-mode .svg-mask-title {
-      color: #1a1a1a;
-      text-shadow: 0 0 15px #ff4c4c;
-    }
-    .svg-glitch {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 650px;
-      height: 110px;
-      pointer-events: none;
-      opacity: 0;
-      z-index: 19;
-    }
+
     .subtitle {
       text-align: center;
       font-size: 18px;
       color: #ff3c3c;
       letter-spacing: 2px;
       margin-top: -8px;
-      z-index: 10;
-      position: relative;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    /* Typing effect */
-    .typing {
-      display: inline-block;
-      border-right: 2px solid #ff3c3c;
-      white-space: nowrap;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 22px;
-      letter-spacing: 1.5px;
-      color: #ff3c3c;
-      animation: typing-glow 1.5s infinite alternate;
-      background: rgba(0,0,0,0.32);
-      padding: 2px 5px 2px 3px;
-      margin-bottom: 18px;
-      min-height: 28px;
-      min-width: 200px;
-      box-shadow: 0 0 12px #9002;
-    }
-    @keyframes typing-glow {
-      0% { text-shadow: 0 0 6px #f33; }
-      100% { text-shadow: 0 0 16px #f33; }
-    }
-    /* Particle */
-    #particle-canvas {
-      position: fixed;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 3;
-      opacity: 0.7;
-      transition: opacity 0.5s;
-    }
-    /* Day/night toggle */
-    .mode-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 200;
-      background: #111;
-      color: #fff;
-      border-radius: 50%;
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; cursor: pointer;
-      border: 2px solid #333;
-      box-shadow: 0 2px 12px #0007;
-      transition: background 0.3s, color 0.3s, border 0.3s;
-      user-select: none;
-    }
-    .mode-toggle:hover {
-      background: #fff;
-      color: #d00;
-      border: 2px solid #ff3c3c;
-    }
-    body.light-mode .mode-toggle {
-      background: #fff;
-      color: #d00;
-      border: 2px solid #ff3c3c;
-    }
-    /* Hide audio controls by default but keep accessible */
-    #heartbeat-audio {
-      position: absolute;
-      left: -9999px; top: -9999px;
-      width: 1px; height: 1px;
     }
 
-    @media (max-width: 700px) {
-      .svg-mask-title, .blood-title { font-size: 28px; }
-      .svg-mask-title-wrap { height: 48px; }
-      .svg-glitch { width: 96vw; height: 48px; }
+    .hero-container {
+      padding: 100px 20px 60px;
+      position: relative;
     }
+
+    .glow-circle {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(#ff0000, transparent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      opacity: 0.2;
+      z-index: 1;
+    }
+
     section {
       max-width: 900px;
       margin: 60px auto;
       padding: 0 20px;
     }
+
     h2 {
       color: #ff3c3c;
       text-transform: uppercase;
@@ -199,6 +92,7 @@
       border-left: 4px solid #ff3c3c;
       padding-left: 12px;
     }
+
     .about p {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
@@ -206,21 +100,19 @@
       font-size: 15px;
       line-height: 1.8;
     }
-    body.light-mode .about p {
-      background: rgba(255,255,255,0.62);
-      color: #181818;
-    }
+
     p {
       font-size: 14px;
       line-height: 1.7;
       color: #d0d0d0;
     }
-    body.light-mode p { color: #181818; }
+
     .link-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
     }
+
     .link-grid a {
       background: #111;
       padding: 12px 14px;
@@ -231,39 +123,38 @@
       transition: all 0.3s ease;
       font-size: 13px;
     }
+
     .link-grid a:hover {
       background: #ff3c3c;
       color: black;
       font-weight: bold;
     }
-    body.light-mode .link-grid a {
-      background: #fff;
-      color: #d00;
-      border: 1px solid #ff3c3c;
-    }
+
     .grid-3col {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px 20px;
     }
+
     ul {
       list-style-type: none;
       padding-left: 0;
     }
+
     ul.grid-3col li {
       font-size: 13px;
       letter-spacing: 1px;
     }
+
     .awards ul li {
       margin-bottom: 16px;
     }
+
     .awards ul li a {
       color: #fff;
       text-decoration: underline;
     }
-    body.light-mode .awards ul li a {
-      color: #d00;
-    }
+
     footer {
       text-align: center;
       padding: 60px 20px;
@@ -271,7 +162,6 @@
       color: #777;
       border-top: 1px solid #222;
     }
-    body.light-mode footer { color: #333; border-top: 1px solid #ff3c3c; }
   </style>
 </head>
 <body>
@@ -279,36 +169,15 @@
     <source src="dstudio_eye.mp4" type="video/mp4" />
   </video>
   <div class="fade-overlay"></div>
-  <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
-  <!-- Heartbeat ambient audio -->
-  <audio id="heartbeat-audio" src="https://cdn.pixabay.com/audio/2022/10/16/audio_12c2c1a4b6.mp3" preload="auto" loop></audio>
-  <!-- SVG Mask/Glitch Title -->
+
   <div class="hero-container">
     <div class="glow-circle"></div>
-    <div class="svg-mask-title-wrap">
-      <span class="svg-mask-title">DSTUDIO PROJECT</span>
-      <!-- SVG Mask Def -->
-      <svg class="svg-glitch" width="650" height="110" viewBox="0 0 650 110" style="position:absolute;top:0;left:50%;transform:translateX(-50%);" aria-hidden="true">
-        <defs>
-          <mask id="glitchMask" maskUnits="userSpaceOnUse">
-            <rect x="0" y="0" width="650" height="110" fill="#fff"/>
-            <g id="glitch-lines">
-              <rect x="0" y="35" width="650" height="8" fill="#000"/>
-              <rect x="0" y="65" width="650" height="6" fill="#000"/>
-              <rect x="50" y="50" width="180" height="6" fill="#000"/>
-              <rect x="400" y="80" width="120" height="7" fill="#000"/>
-            </g>
-            <animate xlink:href="#glitch-lines" attributeName="y" values="0;10;-10;0" dur="1.2s" repeatCount="indefinite"/>
-          </mask>
-        </defs>
-        <rect x="0" y="0" width="650" height="110" fill="#fff" mask="url(#glitchMask)"/>
-      </svg>
-    </div>
+    <h1>DSTUDIO PROJECT</h1>
     <p class="subtitle">AI Director • Worldbuilder</p>
   </div>
+
   <section class="about">
-    <h2 id="who-title"><span class="typing"></span></h2>
+    <h2>_WHO IS DSTUDIO?_</h2>
     <p>
       Dstudioproject is a creative signal intercepted from the edge of imagination.<br>
       A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
@@ -316,6 +185,7 @@
       The work resists templates. Every frame, every beat—layered, intentional, alive.
     </p>
   </section>
+
   <section class="links">
     <h2>_SIGNAL_ACCESS</h2>
     <div class="link-grid">
@@ -329,6 +199,7 @@
       <a href="https://lynk.id/dstudioproject">LynkID</a>
     </div>
   </section>
+
   <section class="partners">
     <h2>_Partnership</h2>
     <ul class="grid-3col">
@@ -346,6 +217,7 @@
       <li>Lovart</li>
     </ul>
   </section>
+
   <section class="awards">
     <h2>_RECOGNITION_SIGIL</h2>
     <ul>
@@ -353,112 +225,9 @@
       <li><a href="https://x.com/higgsfield_ai/status/1808523883831529916">Best Visual Winner – Higgsfield Spotlight</a></li>
     </ul>
   </section>
+
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
   </footer>
-  <!-- Day/Night Button -->
-  <div class="mode-toggle" id="modeToggle" title="Toggle Dark/Light Mode">🌙</div>
-  <script>
-    // 1. Typing effect "WHO IS DSTUDIO?"
-    const typingSpan = document.querySelector('.typing');
-    const typingText = 'WHO IS DSTUDIO?';
-    let typingIdx = 0, typingGlitchCount = 0;
-    function typeWriter() {
-      if (typingIdx <= typingText.length) {
-        typingSpan.textContent = typingText.slice(0, typingIdx) + (Math.random() < 0.12 && typingIdx > 4 ? String.fromCharCode(65 + Math.random()*26|0) : '');
-        typingIdx++;
-        setTimeout(typeWriter, 70 + Math.random()*50);
-      } else {
-        // Glitch effect after finish
-        setTimeout(() => {
-          let old = typingSpan.textContent;
-          typingSpan.textContent = typingText.replace(/[A-Z]/g, l=>Math.random()<0.18 ? String.fromCharCode(65+Math.random()*26|0):l);
-          setTimeout(()=>{typingSpan.textContent = typingText;}, 160);
-        }, 330);
-      }
-    }
-    typeWriter();
-
-    // 2. Heartbeat sound ambient
-    const heartbeat = document.getElementById('heartbeat-audio');
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(()=>heartbeat.volume=0.13,400);
-      heartbeat.play().catch(()=>{}); // Autoplay policy: Interact to unmute
-    });
-    document.body.addEventListener('click',()=>{heartbeat.play().catch(()=>{});}, {once:true});
-
-    // 3. SVG Mask Title (already in HTML/CSS)
-
-    // 4. Particle Effect: huruf acak beterbangan
-    // Simple letter particles
-    const particleCanvas = document.getElementById('particle-canvas');
-    let ctx = particleCanvas.getContext('2d');
-    let particles = [];
-    function resizeCanvas() {
-      particleCanvas.width = window.innerWidth;
-      particleCanvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function randomChar() {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      return chars[Math.random()*chars.length|0];
-    }
-    function spawnParticle() {
-      const w = particleCanvas.width, h = particleCanvas.height;
-      return {
-        x: Math.random()*w,
-        y: Math.random()*h*0.7,
-        size: 13 + Math.random()*11,
-        char: randomChar(),
-        speedX: -0.02 + Math.random()*0.04,
-        speedY: -0.06 + Math.random()*0.13,
-        alpha: 0.19+Math.random()*0.32,
-        color: Math.random()<0.8 ? "#ff3c3c" : "#fff"
-      };
-    }
-    for(let i=0;i<44;i++) particles.push(spawnParticle());
-
-    function animateParticles() {
-      ctx.clearRect(0,0,particleCanvas.width,particleCanvas.height);
-      for(let p of particles){
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.font = p.size+"px Share Tech Mono,monospace";
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 12;
-        ctx.fillStyle = p.color;
-        ctx.fillText(p.char, p.x, p.y);
-        ctx.restore();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.alpha -= 0.0008+Math.random()*0.0007;
-        if (p.y < 0 || p.x < 0 || p.x > particleCanvas.width || p.alpha < 0.05) {
-          Object.assign(p, spawnParticle());
-          p.y = particleCanvas.height + 30*Math.random();
-        }
-      }
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // 5. Mode siang/malam
-    const modeToggle = document.getElementById('modeToggle');
-    const updateModeIcon = () => {
-      modeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
-    }
-    modeToggle.onclick = function() {
-      document.body.classList.toggle('light-mode');
-      updateModeIcon();
-    };
-    updateModeIcon();
-
-    // Optional: Pause heartbeat audio when not visible for performance
-    document.addEventListener('visibilitychange',function(){
-      if(document.hidden) heartbeat.pause();
-      else heartbeat.play().catch(()=>{});
-    });
-  </script>
 </body>
 </html>
