@@ -1,101 +1,123 @@
-/* Reset + Basics */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body {
+
+body, html {
   font-family: 'Helvetica Neue', sans-serif;
-  color: #fff;
-  background-color: #000;
-  line-height: 1.6;
+  color: white;
+  background-color: black;
+  height: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Background Video */
+/* Fullscreen Video */
 .video-background {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   z-index: -2;
 }
+
 .video-background video {
-  position: absolute;
-  top: 50%; left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-}
-.video-overlay {
-  position: fixed;
-  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+/* Overlay Layer */
+.video-background .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
   z-index: -1;
 }
 
-/* Centered Hero Text */
-.hero-text {
+/* Hero Text */
+.hero {
   text-align: center;
-  padding-top: 25vh;
+  padding: 20vh 10vw 10vh;
+  z-index: 1;
+  position: relative;
 }
-.hero-text h1 {
-  font-size: 3rem;
+
+.hero h1 {
+  font-size: 3.5rem;
   letter-spacing: 0.2rem;
   font-weight: 700;
 }
-.hero-text p {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
   color: #ccc;
 }
 
 /* Section Styling */
 section {
-  max-width: 800px;
-  margin: 5rem auto;
-  padding: 0 1.5rem;
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
+
 h2 {
   font-size: 1.2rem;
-  color: #ff5555;
+  color: #ff3c3c;
   margin-bottom: 1rem;
-  letter-spacing: 2px;
-}
-p, li {
-  color: #ddd;
-  font-size: 0.95rem;
 }
 
-/* Link Grid */
+p, li, a {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+/* Grid Links */
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.8rem;
-}
-.link-grid a {
-  background: #111;
-  padding: 0.75rem 1rem;
-  text-align: center;
-  text-decoration: none;
-  border: 1px solid #333;
-  border-radius: 6px;
-  color: #fff;
-  transition: 0.3s;
-}
-.link-grid a:hover {
-  background: #222;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-/* Footer */
+.link-grid a {
+  color: #ffcccc;
+  font-weight: bold;
+}
+
+.link-grid a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* List */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 0.6rem;
+}
+
+.awards a {
+  color: #fff8c0;
+}
+
 footer {
   text-align: center;
-  margin: 4rem 0;
-  color: #666;
-  font-size: 0.85rem;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #888;
 }
