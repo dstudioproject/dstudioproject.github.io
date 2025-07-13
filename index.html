@@ -1,107 +1,89 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSTUDIOPROJECT ARCHIVE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-body {
-  font-family: 'Courier New', monospace;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
-}
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="eye.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
+  <div class="overlay"></div>
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
+  <main class="container">
+    <section class="left-column">
+      <div class="index-list">
+        <p><strong>DATABASE INDEX</strong></p>
+        <ul>
+          <li>001 / SIGNAL DROP</li>
+          <li>002 / CHAOS VISION</li>
+          <li>003 / FUTURE TBA</li>
+        </ul>
+      </div>
+      <div class="community-list">
+        <p><strong>COMMUNITIES</strong></p>
+        <ul>
+          <li>Higgsfield</li>
+          <li>Pollo AI</li>
+          <li>Hailuo</li>
+        </ul>
+      </div>
+    </section>
 
-.container {
-  display: flex;
-  padding: 40px;
-  min-height: 100vh;
-}
+    <section class="right-column">
+      <h1>DSTUDIOPROJECT</h1>
+      <p class="sub">CINEMATIC WORLD BUILDER</p>
 
-.left-column {
-  width: 25%;
-  padding-right: 40px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
+      <div class="bio">
+        <p>
+          <strong>Dika Karan</strong> is a multidisciplinary AI creator exploring cinematic worldbuilding and narrative design through GenAI.<br>
+          Fusing Southeast Asian history, instinct-driven storytelling, and visual experimentation—DSTUDIO is a signal from the edge of imagination.
+        </p>
+      </div>
 
-.right-column {
-  width: 75%;
-  padding-left: 40px;
-}
+      <div class="platforms">
+        <table>
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>Link</th>
+              <th>Content</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Instagram</td>
+              <td><a href="https://instagram.com/dstudiosignal">dstudiosignal</a></td>
+              <td>cinematic reels + archive</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>YouTube</td>
+              <td><a href="#">youtube.com/@dstudioproject</a></td>
+              <td>AI short films</td>
+              <td>active</td>
+            </tr>
+            <tr>
+              <td>Medium</td>
+              <td><a href="#">medium.com/@dstudioproject</a></td>
+              <td>behind the scenes / case studies</td>
+              <td>active</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-.index-list ul,
-.community-list ul {
-  list-style: none;
-  margin-top: 10px;
-}
+      <div class="footer-info">
+        <p>Version — v1.0<br/>Last Update: 2025</p>
+      </div>
+    </section>
+  </main>
 
-.index-list li,
-.community-list li {
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 5px;
-}
-
-.sub {
-  font-size: 1rem;
-  margin-bottom: 30px;
-  color: #ccc;
-  opacity: 0.8;
-}
-
-.bio {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 4px;
-  margin-bottom: 30px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.platforms table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-
-.platforms th,
-.platforms td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 10px;
-  text-align: left;
-}
-
-.platforms a {
-  color: #ffb347;
-  text-decoration: none;
-}
-
-.footer-info {
-  margin-top: 50px;
-  font-size: 0.8rem;
-  color: #777;
-}
+</body>
+</html>
