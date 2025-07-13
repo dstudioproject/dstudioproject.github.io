@@ -20,7 +20,6 @@
       position: relative;
     }
 
-    /* Both videos (desktop & mobile) */
     #bg-video-desktop,
     #bg-video-mobile {
       position: fixed;
@@ -32,17 +31,14 @@
       z-index: -2;
     }
 
-    /* Show desktop video by default */
     #bg-video-desktop {
       display: block;
     }
 
-    /* Hide mobile video by default */
     #bg-video-mobile {
       display: none;
     }
 
-    /* Switch video source for mobile */
     @media only screen and (max-width: 768px) {
       #bg-video-desktop {
         display: none;
@@ -63,6 +59,33 @@
       z-index: -1;
     }
 
+    @keyframes glitchReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.95) skew(0.5deg);
+        text-shadow: none;
+      }
+      20% {
+        opacity: 0.4;
+        text-shadow: 2px 0 red, -2px 0 blue;
+      }
+      40% {
+        opacity: 0.7;
+        text-shadow: -2px 0 red, 2px 0 blue;
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 0 0 10px red;
+      }
+      80% {
+        text-shadow: 0 0 15px red;
+      }
+      100% {
+        text-shadow: 0 0 10px red;
+      }
+    }
+
     h1 {
       font-family: 'Playfair Display', serif;
       text-align: center;
@@ -72,7 +95,7 @@
       color: #ffffff;
       position: relative;
       z-index: 2;
-      text-shadow: 0 0 15px red;
+      animation: glitchReveal 2s ease-out;
     }
 
     .subtitle {
@@ -189,12 +212,10 @@
 </head>
 <body>
 
-  <!-- Desktop video -->
   <video autoplay muted loop playsinline preload="auto" id="bg-video-desktop">
     <source src="kimono_66.mp4" type="video/mp4" />
   </video>
 
-  <!-- Mobile video -->
   <video autoplay muted loop playsinline preload="auto" id="bg-video-mobile">
     <source src="kimono_77.mp4" type="video/mp4" />
   </video>
@@ -208,7 +229,7 @@
   </div>
 
   <section class="about">
-    <h2>_WHO IS DSTUDIO?_</h2>
+    <h2>_WHO IS DSTUDIO?</h2>
     <p>
       Dstudioproject is a creative signal intercepted from the edge of imagination.<br>
       A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
@@ -227,7 +248,7 @@
       <a href="https://www.behance.net/dikakaran/projects">Behance</a>
       <a href="https://linkedin.com/in/dika-karan-yudha">LinkedIn</a>
       <a href="https://ko-fi.com/dikakarans">Ko-fi</a>
-      <a href="https://lynk.id/dstudioproject">LynkID</a>
+      <a href="https://lynk.id/d_studioproject">LynkID</a>
     </div>
   </section>
 
