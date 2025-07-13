@@ -6,15 +6,26 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
+      margin: 0;
+      padding: 40px;
       background-color: #0a0a0a;
       color: white;
       font-family: 'Courier New', monospace;
-      margin: 0;
-      padding: 40px;
-      background-image: url('your-background.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .overlay {
@@ -27,23 +38,22 @@
     .main {
       max-width: 900px;
       margin: auto;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
       font-size: 32px;
-      color: white;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
 
     .subtitle {
-      color: white;
       font-size: 14px;
       margin-bottom: 40px;
     }
 
     h2 {
-      color: white;
       border-bottom: 1px solid white;
       padding-bottom: 5px;
       margin-top: 40px;
@@ -59,7 +69,6 @@
       padding: 10px 0;
       text-align: left;
       font-size: 14px;
-      color: white;
     }
 
     th {
@@ -105,35 +114,26 @@
 
     footer {
       margin-top: 80px;
-      color: white;
       font-size: 12px;
-    }
-
-    .video-container {
-      margin: 40px 0;
-      border: 1px solid white;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 8px;
     }
   </style>
 </head>
 <body>
+
+  <!-- ✅ Fullscreen video background -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="reel.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ✅ Dark overlay to enhance text readability -->
   <div class="overlay"></div>
+
+  <!-- ✅ Main content scrolls on top -->
   <div class="main">
     <h1>D|STUDIO PROJECT</h1>
     <p class="subtitle">AI Director · Worldbuilder</p>
-
-    <!-- ✅ VIDEO SECTION START -->
-    <div class="video-container">
-      <video controls autoplay muted loop>
-        <source src="reel.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <!-- ✅ VIDEO SECTION END -->
 
     <section>
       <h2>666 / SIGNAL LINKS</h2>
@@ -146,46 +146,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Instagram</td>
-            <td><a href="https://instagram.com/d_studioproject" target="_blank">instagram.com/d_studioproject</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>YouTube</td>
-            <td><a href="https://www.youtube.com/@D_studioproject" target="_blank">youtube.com/@D_studioproject</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>X</td>
-            <td><a href="https://x.com/D_studioproject" target="_blank">x.com/D_studioproject</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>Threads</td>
-            <td><a href="https://www.threads.com/@d_studioproject" target="_blank">threads.com/@d_studioproject</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>Medium</td>
-            <td><a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e" target="_blank">chaos into vision</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>LinkedIn</td>
-            <td><a href="https://www.linkedin.com/in/dika-karan-yudha-77641187/" target="_blank">linkedin.com/in/dika-karan-yudha</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>Ko-fi</td>
-            <td><a href="https://ko-fi.com/dikakarans" target="_blank">ko-fi.com/dikakarans</a></td>
-            <td>Online</td>
-          </tr>
-          <tr>
-            <td>Lynk ID</td>
-            <td><a href="https://lynk.id/d_studioproject" target="_blank">lynk.id/d_studioproject</a></td>
-            <td>Online</td>
-          </tr>
+          <tr><td>Instagram</td><td><a href="https://instagram.com/d_studioproject" target="_blank">instagram.com/d_studioproject</a></td><td>Online</td></tr>
+          <tr><td>YouTube</td><td><a href="https://www.youtube.com/@D_studioproject" target="_blank">youtube.com/@D_studioproject</a></td><td>Online</td></tr>
+          <tr><td>X</td><td><a href="https://x.com/D_studioproject" target="_blank">x.com/D_studioproject</a></td><td>Online</td></tr>
+          <tr><td>Threads</td><td><a href="https://www.threads.com/@d_studioproject" target="_blank">threads.com/@d_studioproject</a></td><td>Online</td></tr>
+          <tr><td>Medium</td><td><a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e" target="_blank">chaos into vision</a></td><td>Online</td></tr>
+          <tr><td>LinkedIn</td><td><a href="https://www.linkedin.com/in/dika-karan-yudha-77641187/" target="_blank">linkedin.com/in/dika-karan-yudha</a></td><td>Online</td></tr>
+          <tr><td>Ko-fi</td><td><a href="https://ko-fi.com/dikakarans" target="_blank">ko-fi.com/dikakarans</a></td><td>Online</td></tr>
+          <tr><td>Lynk ID</td><td><a href="https://lynk.id/d_studioproject" target="_blank">lynk.id/d_studioproject</a></td><td>Online</td></tr>
         </tbody>
       </table>
     </section>
@@ -193,19 +161,9 @@
     <section>
       <h2>777 / COLLABORATIONS</h2>
       <div class="collab-grid">
-        <div>• Higgsfield</div>
-        <div>• Hailuo</div>
-        <div>• Topazlabs</div>
-        <div>• ImagineArt</div>
-        <div>• Wan</div>
-        <div>• Vidu</div>
-        <div>• Pollo AI</div>
-        <div>• Flexclip</div>
-        <div>• Pixverse</div>
-        <div>• Sync</div>
-        <div>• Basedlabs</div>
-        <div>• Wavespeedai</div>
-        <div>• Lovart</div>
+        <div>• Higgsfield</div><div>• Hailuo</div><div>• Topazlabs</div><div>• ImagineArt</div><div>• Wan</div>
+        <div>• Vidu</div><div>• Pollo AI</div><div>• Flexclip</div><div>• Pixverse</div><div>• Sync</div>
+        <div>• Basedlabs</div><div>• Wavespeedai</div><div>• Lovart</div>
       </div>
     </section>
 
