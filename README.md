@@ -1,2 +1,2 @@
 # dstudioproject.github
-dstudioproject portfolio – AI Director • Worldbuilder
+dstudioproject portfolio • AI Director • Worldbuilder
