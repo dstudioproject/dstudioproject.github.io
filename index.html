@@ -28,8 +28,18 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
+      z-index: -2;
+    }
+
+    /* Fade black overlay */
+    .fade-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
-      pointer-events: none;
     }
 
     h1 {
@@ -41,12 +51,7 @@
       color: #ffffff;
       z-index: 2;
       position: relative;
-      animation: dripBlood 4s ease-in-out forwards;
-    }
-
-    @keyframes dripBlood {
-      0% { text-shadow: 0 0 0 #ff0000; }
-      100% { text-shadow: 0 4px 12px #ff0000, 0 8px 24px #8b0000; }
+      text-shadow: 0 0 15px red;
     }
 
     .subtitle {
@@ -88,6 +93,14 @@
       margin-bottom: 20px;
       border-left: 4px solid #ff3c3c;
       padding-left: 12px;
+    }
+
+    .about p {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      line-height: 1.8;
     }
 
     p {
@@ -135,6 +148,10 @@
       letter-spacing: 1px;
     }
 
+    .awards ul li {
+      margin-bottom: 16px;
+    }
+
     .awards ul li a {
       color: #fff;
       text-decoration: underline;
@@ -153,6 +170,7 @@
   <video autoplay muted loop playsinline preload="auto" id="bg-video">
     <source src="dstudio_eye.mp4" type="video/mp4" />
   </video>
+  <div class="fade-overlay"></div>
 
   <div class="hero-container">
     <div class="glow-circle"></div>
@@ -163,7 +181,7 @@
   <section class="about">
     <h2>_WHO IS DSTUDIO?_</h2>
     <p>
-      Dstudioproject is a creative signal intercepted from the edge of imagination <br>
+      Dstudioproject is a creative signal intercepted from the edge of imagination.<br>
       A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
       Founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos to create visual language without compromise.<br>
       The work resists templates. Every frame, every beat—layered, intentional, alive.
@@ -205,8 +223,8 @@
   <section class="awards">
     <h2>_RECOGNITION_SIGIL</h2>
     <ul>
-      <li><a href="https://discord.com/channels/1342754873384505414/1364141237795295283/1375411255929470986">Outstanding Award – WAN Break The Box Challenge</a></li>
-      <li><a href="https://www.instagram.com/p/DL3H-EliFE6/?img_index=2">Best Visual Winner – Higgsfield Spotlight</a></li>
+      <li><a href="https://wan.global/break-the-box">Outstanding Award – WAN Break The Box Challenge</a></li>
+      <li><a href="https://x.com/higgsfield_ai/status/1808523883831529916">Best Visual Winner – Higgsfield Spotlight</a></li>
     </ul>
   </section>
 
