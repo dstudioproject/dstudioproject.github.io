@@ -1,11 +1,31 @@
 /* === Ritual Red + Mono Grid Style === */
-
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
+
+/* Fullscreen video background */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  background: #000;
+}
+
+/* Content always in front of video */
+body, .hero-container, section, footer {
+  position: relative;
+  z-index: 1;
+}
 
 body {
   margin: 0;
   padding: 0;
-  background: #0a0a0a;
+  background: transparent;
   color: #ffffff;
   font-family: 'Share Tech Mono', monospace;
   overflow-x: hidden;
@@ -31,20 +51,12 @@ h1 {
 }
 
 .hero-container {
-  position: relative;
+  /* Tanpa background-image agar video tampil jelas */
+  background: none;
+  background-size: cover;
+  background-position: center;
   padding: 100px 20px 60px;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden;
-}
-
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the video covers the container */
-  z-index: 0; /* Behind all other content */
+  position: relative;
 }
 
 .glow-circle {
