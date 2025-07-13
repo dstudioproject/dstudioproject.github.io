@@ -209,6 +209,12 @@
       color: #777;
       border-top: 1px solid #222;
     }
+
+    /* Tambahan untuk sembunyikan play button iOS */
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
+    }
   </style>
 </head>
 <body>
@@ -280,10 +286,9 @@
   </section>
 
   <section class="contact">
-  <h2>_CONTACT</h2>
-  <p>Send signal → <a href="mailto:dikakaran22@gmail.com" style="color: #ffffff; text-decoration: underline;">dikakaran22@gmail.com</a></p>
-</section>
-
+    <h2>_CONTACT</h2>
+    <p>Send signal → <a href="mailto:dikakaran22@gmail.com" style="color: #ffffff; text-decoration: underline;">dikakaran22@gmail.com</a></p>
+  </section>
 
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
