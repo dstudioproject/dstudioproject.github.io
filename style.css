@@ -113,3 +113,29 @@ td a:hover {
   color: white;
   border-color: white;
 }
+
+section p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: white;
+  line-height: 1.6;
+}
+
+section ul {
+  padding-left: 20px;
+}
+
+section ul li {
+  list-style: none;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+}
+
+section ul li::before {
+  content: "🏆";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
