@@ -1,27 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>D|STUDIOPROJECT</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D|STUDIO PROJECT</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 56px;
+      letter-spacing: 4px;
+      margin-top: 60px;
+      color: #ffffff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #ff3c3c;
+      letter-spacing: 2px;
+      margin-top: -10px;
+    }
+
+    .hero-container {
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    .glow-circle {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(#ff0000, transparent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      color: #ff3c3c;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ff3c3c;
+      padding-left: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #d0d0d0;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .link-grid a {
+      background: #111;
+      padding: 12px 14px;
+      color: white;
+      border: 1px solid #333;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-size: 13px;
+    }
+
+    .link-grid a:hover {
+      background: #ff3c3c;
+      color: black;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 11px;
+      color: #777;
+      border-top: 1px solid #222;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- 🔴 Video background -->
-  <video autoplay muted loop playsinline id="bg-video">
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay muted loop playsinline>
     <source src="eye.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
 
-  <!-- 🔴 Overlay konten di atas video -->
-  <div class="content">
-    <h1>D|STUDIOPROJECT</h1>
-    <p>AI Director • Worldbuilder</p>
-    <p>
-      dstudioproject is a creative signal intercepted from the edge of imagination.<br>
-      a glitch from the future, a cinematic signal crafted with instinct over instruction.
-    </p>
-    <p>founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos...</p>
+  <!-- Hero Section -->
+  <div class="hero-container">
+    <div class="glow-circle"></div>
+    <h1>D｜STUDIO</h1>
+    <p class="subtitle"> AI Vision & Worldbuilding Unit</p>
   </div>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>_ABOUT_D|STUDIO</h2>
+    <p>
+      D|STUDIO is not a studio. It is a transmission.<br>
+      A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
+      Founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos to create visual language without compromise.<br>
+      The work resists templates. Every frame, every beat—layered, intentional, alive.
+    </p>
+  </section>
+
+  <!-- Signal Links -->
+  <section class="links">
+    <h2>_SIGNAL_ACCESS</h2>
+    <div class="link-grid">
+      <a href="https://instagram.com/dstudioproject">Instagram</a>
+      <a href="https://youtube.com/@d_studioproject">YouTube</a>
+      <a href="https://x.com/D_studioproject">X (Twitter)</a>
+      <a href="https://threads.net/@d_studioproject">Threads</a>
+      <a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e">Chaos into Vision</a>
+      <a href="https://linkedin.com/in/dika-karan-yudha">LinkedIn</a>
+      <a href="https://ko-fi.com/dikakarans">Ko-fi</a>
+      <a href="https://lynk.id/dstudioproject">Lynk ID</a>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners">
+    <h2>_ALLIES_AND_ORDER</h2>
+    <ul>
+      <li>Higgsfield</li>
+      <li>Hailuo</li>
+      <li>Topazlabs</li>
+      <li>ImagineArt</li>
+      <li>Wan</li>
+      <li>Pollo AI</li>
+      <li>Flexclip</li>
+      <li>Pixverse</li>
+      <li>Sync</li>
+      <li>Basedlabs</li>
+      <li>Wavespeedai</li>
+      <li>Lovart</li>
+    </ul>
+  </section>
+
+  <!-- Awards -->
+  <section class="awards">
+    <h2>_RECOGNITION_SIGIL</h2>
+    <ul>
+      <li>Outstanding Award – WAN Break The Box Challenge</li>
+      <li>Best Visual Winner – Higgsfield Spotlight</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>⸺ This interface is a cinematic anomaly ⸺</p>
+  </footer>
 
 </body>
 </html>
