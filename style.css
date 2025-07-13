@@ -1,17 +1,23 @@
 /* D|STUDIO ARCHIVE STYLE — DARK THEME */
 
-body {
-  background-color: #0a0a0a;
-  color: white;
-  font-family: 'Courier New', monospace;
-  margin: 0;
-  padding: 40px;
-  background-image: url('your-background.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+/* ✅ Fullscreen video background layer */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
 }
 
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ✅ Overlay layer to darken video for better text contrast */
 .overlay {
   position: fixed;
   top: 0;
@@ -22,9 +28,19 @@ body {
   z-index: -1;
 }
 
+body {
+  background-color: #0a0a0a;
+  color: white;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 40px;
+}
+
 .main {
   max-width: 900px;
   margin: auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* HEADINGS */
