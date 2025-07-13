@@ -6,12 +6,6 @@
   <title>DSTUDIO PROJECT</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Share Tech Mono', monospace;
       background: #000;
@@ -19,7 +13,6 @@
       overflow-x: hidden;
       position: relative;
     }
-
     video#bg-video {
       position: fixed;
       top: 0;
@@ -29,7 +22,6 @@
       object-fit: cover;
       z-index: -2;
     }
-
     .fade-overlay {
       position: fixed;
       top: 0;
@@ -40,64 +32,10 @@
       z-index: -1;
     }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      text-align: center;
-      font-size: 64px;
-      letter-spacing: 4px;
-      margin-top: 60px;
-      color: #ffffff;
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 0 15px red;
-    }
-
-    /* Dripping Blood Animation */
-    h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      background: red;
-      border-radius: 50%;
-      animation: drip 2.5s infinite ease-in-out;
-      transform: translateX(-50%);
-      box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
-    }
-
-    @keyframes drip {
-      0% {
-        height: 10px;
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        height: 25px;
-        opacity: 0.8;
-        transform: translateX(-50%) translateY(12px);
-      }
-      100% {
-        height: 0px;
-        opacity: 0;
-        transform: translateX(-50%) translateY(20px);
-      }
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 18px;
-      color: #ff3c3c;
-      letter-spacing: 2px;
-      margin-top: -8px;
-    }
-
     .hero-container {
       padding: 100px 20px 60px;
       position: relative;
     }
-
     .glow-circle {
       position: absolute;
       top: 30px;
@@ -111,12 +49,122 @@
       z-index: 1;
     }
 
+    /* BLOOD DRIP EFFECT */
+    .drip-text {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 0;
+    }
+    .drip-char {
+      position: relative;
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px red;
+      line-height: 1;
+      z-index: 10;
+      overflow: visible;
+    }
+    .drip-char .drip {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 16px;
+      height: 0;
+      background: linear-gradient(to bottom, #ff3c3c 90%, #800 100%);
+      border-radius: 8px;
+      box-shadow: 0 0 10px 3px #c00c, 0 4px 12px 2px #a00c;
+      transform: translateX(-50%);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 5;
+      animation: drip-fall 2.5s forwards;
+      animation-delay: var(--drip-delay, 0s);
+    }
+    .drip-char .drip-tip {
+      position: absolute;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 55% 70%, #ff3c3c 80%, #800 100%);
+      transform: translateX(-50%);
+      top: var(--drip-tip-top, 0);
+      opacity: 0.95;
+      z-index: 6;
+      animation: drip-tip-fall 2.5s forwards;
+      animation-delay: var(--drip-delay, 0s);
+    }
+    /* Keyframes for the blood drip body */
+    @keyframes drip-fall {
+      0% {
+        height: 0;
+        opacity: 0.7;
+      }
+      20% {
+        height: 0.2em;
+        opacity: 1;
+      }
+      40% {
+        height: 1.2em;
+        opacity: 1;
+      }
+      60% {
+        height: 1.8em;
+        opacity: 1;
+      }
+      80% {
+        height: 2.2em;
+        opacity: 0.85;
+      }
+      100% {
+        height: 2.8em;
+        opacity: 0;
+      }
+    }
+    /* Keyframes for the blood drop tip */
+    @keyframes drip-tip-fall {
+      0% {
+        top: 0;
+        opacity: 1;
+      }
+      40% {
+        top: 1.2em;
+        opacity: 1;
+      }
+      60% {
+        top: 1.8em;
+        opacity: 1;
+      }
+      80% {
+        top: 2.3em;
+        opacity: 0.85;
+      }
+      100% {
+        top: 2.8em;
+        opacity: 0;
+      }
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #ff3c3c;
+      letter-spacing: 2px;
+      margin-top: -8px;
+    }
+
     section {
       max-width: 900px;
       margin: 60px auto;
       padding: 0 20px;
     }
-
     h2 {
       color: #ff3c3c;
       text-transform: uppercase;
@@ -125,7 +173,6 @@
       border-left: 4px solid #ff3c3c;
       padding-left: 12px;
     }
-
     .about p {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
@@ -133,19 +180,16 @@
       font-size: 15px;
       line-height: 1.8;
     }
-
     p {
       font-size: 14px;
       line-height: 1.7;
       color: #d0d0d0;
     }
-
     .link-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
     }
-
     .link-grid a {
       background: #111;
       padding: 12px 14px;
@@ -156,44 +200,45 @@
       transition: all 0.3s ease;
       font-size: 13px;
     }
-
     .link-grid a:hover {
       background: #ff3c3c;
       color: black;
       font-weight: bold;
     }
-
     .grid-3col {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px 20px;
     }
-
     ul {
       list-style-type: none;
       padding-left: 0;
     }
-
     ul.grid-3col li {
       font-size: 13px;
       letter-spacing: 1px;
     }
-
     .awards ul li {
       margin-bottom: 16px;
     }
-
     .awards ul li a {
       color: #fff;
       text-decoration: underline;
     }
-
     footer {
       text-align: center;
       padding: 60px 20px;
       font-size: 11px;
       color: #777;
       border-top: 1px solid #222;
+    }
+
+    /* Responsive font size for hero text */
+    @media (max-width: 600px) {
+      .drip-char {
+        font-size: 32px;
+        letter-spacing: 2px;
+      }
     }
   </style>
 </head>
@@ -205,7 +250,7 @@
 
   <div class="hero-container">
     <div class="glow-circle"></div>
-    <h1>DSTUDIO PROJECT</h1>
+    <div class="drip-text" id="dripText"></div>
     <p class="subtitle">AI Director • Worldbuilder</p>
   </div>
 
@@ -262,5 +307,50 @@
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
   </footer>
+
+  <script>
+    // The text to render with blood drips
+    const text = "DSTUDIO PROJECT";
+    const dripText = document.getElementById('dripText');
+    dripText.innerHTML = '';
+
+    // Settings
+    const dripDuration = 2500; // ms, must match CSS animation-duration
+    const dripInterval = 160; // ms, delay between each char
+    let index = 0;
+
+    // Helper to create span for each char with blood drip
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      const span = document.createElement('span');
+      span.className = 'drip-char';
+      span.textContent = ch;
+
+      if (ch !== ' ') {
+        // Blood drip elements
+        const drip = document.createElement('span');
+        drip.className = 'drip';
+        drip.style.setProperty('--drip-delay', (i * dripInterval / 1000) + 's');
+
+        const dripTip = document.createElement('span');
+        dripTip.className = 'drip-tip';
+        dripTip.style.setProperty('--drip-tip-top', '0');
+        dripTip.style.setProperty('--drip-delay', (i * dripInterval / 1000) + 's');
+
+        span.appendChild(drip);
+        span.appendChild(dripTip);
+      }
+      dripText.appendChild(span);
+    }
+
+    // Loop animation: after all drips are done, remove and restart
+    function restartDrip() {
+      const drips = document.querySelectorAll('.drip');
+      const dripTips = document.querySelectorAll('.drip-tip');
+      drips.forEach(d => { d.style.animation = 'none'; d.offsetHeight; d.style.animation = ''; });
+      dripTips.forEach(d => { d.style.animation = 'none'; d.offsetHeight; d.style.animation = ''; });
+    }
+    setInterval(restartDrip, dripDuration + (text.replace(/ /g, '').length * dripInterval));
+  </script>
 </body>
 </html>
