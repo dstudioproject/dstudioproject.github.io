@@ -1,60 +1,54 @@
-/* D|STUDIO Clean Minimal Theme */
-
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial Black', 'Segoe UI', sans-serif;
+  background-color: #0a0a0a;
   color: white;
-  background: url('your-background.png') no-repeat center center fixed;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 40px;
+  background-image: url('your-background.png');
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
-  background-color: #000; /* fallback */
 }
 
 .overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* subtle overlay */
+  background: rgba(0, 0, 0, 0.75);
   z-index: -1;
 }
 
 .main {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
-  padding: 80px 40px;
 }
 
 h1 {
-  font-size: 36px;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 32px;
   color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .subtitle {
+  color: white;
   font-size: 14px;
-  color: #ccc;
-  letter-spacing: 1px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 h2 {
-  font-size: 18px;
-  text-transform: uppercase;
-  border-bottom: 1px solid #555;
-  padding-bottom: 8px;
-  margin-bottom: 30px;
   color: white;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+  margin-top: 40px;
 }
 
 ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
 li {
-  margin: 12px 0;
+  margin: 10px 0;
   font-size: 14px;
   color: white;
 }
@@ -62,21 +56,20 @@ li {
 a {
   color: white;
   text-decoration: none;
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid white;
 }
 
 a:hover {
-  color: #ffffff;
-  border-color: #fff;
+  text-decoration: underline;
 }
 
 .active {
-  color: #aaa;
+  color: white;
   font-style: italic;
 }
 
 footer {
   margin-top: 80px;
+  color: white;
   font-size: 12px;
-  color: #555;
 }
