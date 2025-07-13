@@ -31,10 +31,10 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
-
     .hero-container {
       padding: 100px 20px 60px;
       position: relative;
+      z-index: 10;
     }
     .glow-circle {
       position: absolute;
@@ -48,118 +48,58 @@
       opacity: 0.2;
       z-index: 1;
     }
-
-    /* BLOOD DRIP EFFECT */
-    .drip-text {
+    .svg-blood-wrap {
       display: flex;
       justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
+      align-items: flex-start;
       position: relative;
-      z-index: 10;
+      width: 100%;
       margin-bottom: 0;
+      z-index: 15;
+      pointer-events: none;
+      height: 130px;
+      /* adjust height as needed */
     }
-    .drip-char {
-      position: relative;
-      display: inline-block;
-      font-family: 'Playfair Display', serif;
-      font-size: 64px;
-      color: #fff;
-      letter-spacing: 4px;
-      text-shadow: 0 0 15px red;
-      line-height: 1;
-      z-index: 10;
-      overflow: visible;
-    }
-    .drip-char .drip {
+    .svg-blood {
       position: absolute;
       top: 0;
       left: 50%;
-      width: 16px;
-      height: 0;
-      background: linear-gradient(to bottom, #ff3c3c 90%, #800 100%);
-      border-radius: 8px;
-      box-shadow: 0 0 10px 3px #c00c, 0 4px 12px 2px #a00c;
       transform: translateX(-50%);
-      opacity: 0.8;
+      width: 720px;
+      max-width: 96vw;
+      height: 130px;
       pointer-events: none;
-      z-index: 5;
-      animation: drip-fall 2.5s forwards;
-      animation-delay: var(--drip-delay, 0s);
+      z-index: 12;
+      filter: drop-shadow(0 16px 32px #d00a);
     }
-    .drip-char .drip-tip {
-      position: absolute;
-      left: 50%;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 55% 70%, #ff3c3c 80%, #800 100%);
-      transform: translateX(-50%);
-      top: var(--drip-tip-top, 0);
-      opacity: 0.95;
-      z-index: 6;
-      animation: drip-tip-fall 2.5s forwards;
-      animation-delay: var(--drip-delay, 0s);
+    .blood-title {
+      display: block;
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      letter-spacing: 4px;
+      color: #fff;
+      text-align: center;
+      margin: 0 auto;
+      text-shadow: 0 0 15px red;
+      z-index: 20;
+      background: transparent;
+      line-height: 1;
+      /* To keep text above SVG */
     }
-    /* Keyframes for the blood drip body */
-    @keyframes drip-fall {
-      0% {
-        height: 0;
-        opacity: 0.7;
-      }
-      20% {
-        height: 0.2em;
-        opacity: 1;
-      }
-      40% {
-        height: 1.2em;
-        opacity: 1;
-      }
-      60% {
-        height: 1.8em;
-        opacity: 1;
-      }
-      80% {
-        height: 2.2em;
-        opacity: 0.85;
-      }
-      100% {
-        height: 2.8em;
-        opacity: 0;
-      }
-    }
-    /* Keyframes for the blood drop tip */
-    @keyframes drip-tip-fall {
-      0% {
-        top: 0;
-        opacity: 1;
-      }
-      40% {
-        top: 1.2em;
-        opacity: 1;
-      }
-      60% {
-        top: 1.8em;
-        opacity: 1;
-      }
-      80% {
-        top: 2.3em;
-        opacity: 0.85;
-      }
-      100% {
-        top: 2.8em;
-        opacity: 0;
-      }
-    }
-
     .subtitle {
       text-align: center;
       font-size: 18px;
       color: #ff3c3c;
       letter-spacing: 2px;
       margin-top: -8px;
+      z-index: 10;
+      position: relative;
     }
-
+    @media (max-width: 700px) {
+      .svg-blood, .svg-blood-wrap { height: 68px; }
+      .blood-title { font-size: 32px; }
+    }
     section {
       max-width: 900px;
       margin: 60px auto;
@@ -232,14 +172,6 @@
       color: #777;
       border-top: 1px solid #222;
     }
-
-    /* Responsive font size for hero text */
-    @media (max-width: 600px) {
-      .drip-char {
-        font-size: 32px;
-        letter-spacing: 2px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -247,13 +179,55 @@
     <source src="dstudio_eye.mp4" type="video/mp4" />
   </video>
   <div class="fade-overlay"></div>
-
   <div class="hero-container">
     <div class="glow-circle"></div>
-    <div class="drip-text" id="dripText"></div>
+    <div class="svg-blood-wrap">
+      <span class="blood-title">DSTUDIO PROJECT</span>
+      <svg class="svg-blood" viewBox="0 0 720 130" width="720" height="130">
+        <defs>
+          <linearGradient id="bloodRed" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ff3939"/>
+            <stop offset="90%" stop-color="#a80000"/>
+            <stop offset="100%" stop-color="#800000"/>
+          </linearGradient>
+        </defs>
+        <path id="blood-path"
+          fill="url(#bloodRed)" fill-opacity="0.95" stroke="#a80000" stroke-width="2"
+          d="M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+            Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
+            Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z">
+          <animate 
+            attributeName="d"
+            dur="2.8s"
+            repeatCount="indefinite"
+            keyTimes="0;0.35;0.55;0.7;1"
+            values="
+              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+                Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
+                Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z;
+
+              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+                Q715,60 700,90 Q685,120 680,100 Q670,110 660,115 Q650,105 640,120 Q630,115 620,100 Q610,110 600,90 Q590,85 585,110
+                Q570,120 560,110 Q555,85 550,100 Q530,110 520,120 Q510,110 500,115 Q480,110 470,120 Q460,115 450,100 Q437,90 420,110 Q410,120 400,115 Q390,100 380,120 Q370,110 360,100 Q350,115 340,120 Q330,115 320,100 Q310,110 300,120 Q290,110 280,100 Q270,120 260,110 Q250,100 240,120 Q230,110 220,115 Q210,100 200,110 Q190,120 180,115 Q170,100 160,120 Q150,110 140,100 Q135,120 130,115 Q120,100 110,110 Q100,120 90,115 Q80,100 70,120 Q60,110 50,100 Q40,120 0,110 Z;
+
+              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+                Q715,115 700,130 Q685,130 680,118 Q670,130 660,130 Q650,120 640,130 Q630,130 620,130 Q610,120 600,130 Q590,130 585,130
+                Q570,130 560,130 Q555,110 550,130 Q530,130 520,130 Q510,130 500,130 Q480,130 470,130 Q460,130 450,130 Q437,130 420,130 Q410,130 400,130 Q390,130 380,130 Q370,130 360,130 Q350,130 340,130 Q330,130 320,130 Q310,130 300,130 Q290,130 280,130 Q270,130 260,130 Q250,130 240,130 Q230,130 220,130 Q210,130 200,130 Q190,130 180,130 Q170,130 160,130 Q150,130 140,130 Q135,130 130,130 Q120,130 110,130 Q100,130 90,130 Q80,130 70,130 Q60,130 50,130 Q40,130 0,130 Z;
+
+              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+                Q715,60 700,90 Q685,120 680,100 Q670,110 660,115 Q650,105 640,120 Q630,115 620,100 Q610,110 600,90 Q590,85 585,110
+                Q570,120 560,110 Q555,85 550,100 Q530,110 520,120 Q510,110 500,115 Q480,110 470,120 Q460,115 450,100 Q437,90 420,110 Q410,120 400,115 Q390,100 380,120 Q370,110 360,100 Q350,115 340,120 Q330,115 320,100 Q310,110 300,120 Q290,110 280,100 Q270,120 260,110 Q250,100 240,120 Q230,110 220,115 Q210,100 200,110 Q190,120 180,115 Q170,100 160,120 Q150,110 140,100 Q135,120 130,115 Q120,100 110,110 Q100,120 90,115 Q80,100 70,120 Q60,110 50,100 Q40,120 0,110 Z;
+
+              M0,5 Q120,0 240,5 Q360,0 480,5 Q600,0 720,5
+                Q710,20 700,23 Q690,25 680,22 Q675,18 670,28 Q668,30 640,29 Q630,25 620,28 Q610,32 600,29 Q590,28 585,36
+                Q570,40 560,34 Q555,25 550,28 Q530,36 520,32 Q510,36 500,32 Q480,32 470,30 Q460,28 450,34 Q437,40 420,34 Q410,28 400,32 Q390,36 380,32 Q370,28 360,34 Q350,38 340,32 Q330,28 320,32 Q310,36 300,32 Q290,28 280,34 Q270,40 260,34 Q250,28 240,32 Q230,36 220,32 Q210,28 200,32 Q190,36 180,34 Q170,32 160,36 Q150,40 140,34 Q135,28 130,32 Q120,36 110,32 Q100,28 90,34 Q80,40 70,34 Q60,28 50,34 Q40,40 0,36 Z
+            "
+          />
+        </path>
+      </svg>
+    </div>
     <p class="subtitle">AI Director • Worldbuilder</p>
   </div>
-
   <section class="about">
     <h2>_WHO IS DSTUDIO?_</h2>
     <p>
@@ -263,7 +237,6 @@
       The work resists templates. Every frame, every beat—layered, intentional, alive.
     </p>
   </section>
-
   <section class="links">
     <h2>_SIGNAL_ACCESS</h2>
     <div class="link-grid">
@@ -277,7 +250,6 @@
       <a href="https://lynk.id/dstudioproject">LynkID</a>
     </div>
   </section>
-
   <section class="partners">
     <h2>_Partnership</h2>
     <ul class="grid-3col">
@@ -295,7 +267,6 @@
       <li>Lovart</li>
     </ul>
   </section>
-
   <section class="awards">
     <h2>_RECOGNITION_SIGIL</h2>
     <ul>
@@ -303,54 +274,8 @@
       <li><a href="https://x.com/higgsfield_ai/status/1808523883831529916">Best Visual Winner – Higgsfield Spotlight</a></li>
     </ul>
   </section>
-
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
   </footer>
-
-  <script>
-    // The text to render with blood drips
-    const text = "DSTUDIO PROJECT";
-    const dripText = document.getElementById('dripText');
-    dripText.innerHTML = '';
-
-    // Settings
-    const dripDuration = 2500; // ms, must match CSS animation-duration
-    const dripInterval = 160; // ms, delay between each char
-    let index = 0;
-
-    // Helper to create span for each char with blood drip
-    for (let i = 0; i < text.length; i++) {
-      const ch = text[i];
-      const span = document.createElement('span');
-      span.className = 'drip-char';
-      span.textContent = ch;
-
-      if (ch !== ' ') {
-        // Blood drip elements
-        const drip = document.createElement('span');
-        drip.className = 'drip';
-        drip.style.setProperty('--drip-delay', (i * dripInterval / 1000) + 's');
-
-        const dripTip = document.createElement('span');
-        dripTip.className = 'drip-tip';
-        dripTip.style.setProperty('--drip-tip-top', '0');
-        dripTip.style.setProperty('--drip-delay', (i * dripInterval / 1000) + 's');
-
-        span.appendChild(drip);
-        span.appendChild(dripTip);
-      }
-      dripText.appendChild(span);
-    }
-
-    // Loop animation: after all drips are done, remove and restart
-    function restartDrip() {
-      const drips = document.querySelectorAll('.drip');
-      const dripTips = document.querySelectorAll('.drip-tip');
-      drips.forEach(d => { d.style.animation = 'none'; d.offsetHeight; d.style.animation = ''; });
-      dripTips.forEach(d => { d.style.animation = 'none'; d.offsetHeight; d.style.animation = ''; });
-    }
-    setInterval(restartDrip, dripDuration + (text.replace(/ /g, '').length * dripInterval));
-  </script>
 </body>
 </html>
