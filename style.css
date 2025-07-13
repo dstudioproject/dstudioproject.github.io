@@ -1,115 +1,102 @@
-/* === Ritual Red + Mono Grid Style === */
-
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
-
-body {
+/* Global Reset */
+* {
   margin: 0;
   padding: 0;
-  background: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Share Tech Mono', monospace;
+  box-sizing: border-box;
+}
+body {
+  background: #0b0b0b;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #eaeaea;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  font-size: 56px;
-  letter-spacing: 4px;
-  margin-top: 60px;
-  color: #ffffff;
+/* Cinematic Hero Video */
+.video-hero {
   position: relative;
-  z-index: 2;
+  height: 100vh;
+  overflow: hidden;
 }
-
-.subtitle {
-  text-align: center;
-  font-size: 14px;
-  color: #ff3c3c;
-  letter-spacing: 2px;
-  margin-top: -10px;
-}
-
-.hero-container {
-  background-image: url('https://i.imgur.com/MzCU0GS.jpg'); /* replace with abstract Japanese style bg */
-  background-size: cover;
-  background-position: center;
-  padding: 100px 20px 60px;
-  position: relative;
-}
-
-.glow-circle {
+.video-hero video {
   position: absolute;
-  top: 30px;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.5);
+}
+.overlay-text {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(#ff0000, transparent);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  opacity: 0.2;
-  z-index: 1;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.overlay-text p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
+/* Section Layouts */
 section {
+  padding: 80px 40px;
   max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
+  margin: auto;
 }
-
 h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
   color: #ff3c3c;
   text-transform: uppercase;
-  font-size: 14px;
-  margin-bottom: 20px;
-  border-left: 4px solid #ff3c3c;
-  padding-left: 12px;
 }
-
 p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #d0d0d0;
+  font-size: 1.1rem;
 }
 
+/* Grid Links */
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 1rem;
 }
-
 .link-grid a {
-  background: #111;
-  padding: 12px 14px;
-  color: white;
-  border: 1px solid #333;
+  color: #eaeaea;
   text-decoration: none;
+  padding: 10px 14px;
+  background: #1b1b1b;
+  border: 1px solid #333;
   text-align: center;
-  transition: all 0.3s ease;
-  font-size: 13px;
+  transition: 0.2s ease;
 }
-
 .link-grid a:hover {
   background: #ff3c3c;
-  color: black;
-  font-weight: bold;
+  color: #000;
 }
 
+/* Partners and Awards */
 ul {
-  list-style-type: none;
+  list-style: none;
   padding-left: 0;
 }
-
 ul li {
-  margin-bottom: 10px;
-  font-size: 13px;
-  letter-spacing: 1px;
+  padding: 6px 0;
+  border-bottom: 1px solid #2b2b2b;
 }
 
+/* Footer */
 footer {
   text-align: center;
-  padding: 60px 20px;
-  font-size: 11px;
+  padding: 50px 20px;
+  font-size: 0.9rem;
   color: #777;
-  border-top: 1px solid #222;
 }
