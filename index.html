@@ -1,78 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>DSTUDIOPROJECT</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <div class="video-container">
-    <video autoplay muted loop playsinline id="bgvid">
-      <source src="eye.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="overlay"></div>
-  </div>
+body {
+  font-family: 'Courier New', monospace;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-  <div class="content">
-    <h1>DSTUDIOPROJECT</h1>
-    <p class="subtitle">AI Director • Worldbuilder</p>
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
 
-    <section>
-      <h2>_ABOUT_DSTUDIOPROJECT</h2>
-      <p>
-        dstudioproject is a creative signal intercepted from the edge of imagination.<br>
-        a glitch from the future, a cinematic signal crafted with instinct over instruction.
-      </p>
-      <p>
-        founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos to create visual language without compromise.<br>
-        the work resists templates. every frame, every beat—layered, intentional, alive.
-      </p>
-    </section>
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
 
-    <section>
-      <h2>_SIGNAL_ACCESS</h2>
-      <div class="link-grid">
-        <a href="https://www.instagram.com">Instagram</a>
-        <a href="https://www.youtube.com">YouTube</a>
-        <a href="https://twitter.com">X (Twitter)</a>
-        <a href="https://www.threads.net">Threads</a>
-        <a href="https://medium.com">Medium</a>
-        <a href="https://linkedin.com">LinkedIn</a>
-        <a href="https://ko-fi.com">Ko-fi</a>
-        <a href="https://lynk.id">Lynk ID</a>
-      </div>
-    </section>
+.container {
+  display: flex;
+  padding: 40px;
+  min-height: 100vh;
+}
 
-    <section>
-      <h2>_ALLIES_AND_ORDER</h2>
-      <ul class="ally-list">
-        <li>Higgsfield</li>
-        <li>Hailuo</li>
-        <li>Topazlabs</li>
-        <li>ImagineArt</li>
-        <li>Wan</li>
-        <li>Pollo AI</li>
-        <li>Flexclip</li>
-        <li>Pixverse</li>
-        <li>Sync</li>
-        <li>Basedlabs</li>
-        <li>Wavespeedai</li>
-        <li>Lovart</li>
-      </ul>
-    </section>
+.left-column {
+  width: 25%;
+  padding-right: 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-    <section>
-      <h2>_RECOGNITION_SIGIL</h2>
-      <ul class="award-list">
-        <li>🏆 <a href="https://wanofficial.medium.com" target="_blank">Outstanding Award – WAN Break The Box Challenge</a></li>
-        <li>🏆 <a href="https://medium.com/@higgsfield/spotlight-winner" target="_blank">Best Visual Winner – Higgsfield Spotlight</a></li>
-      </ul>
-    </section>
-  </div>
+.right-column {
+  width: 75%;
+  padding-left: 40px;
+}
 
-</body>
-</html>
+.index-list ul,
+.community-list ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.index-list li,
+.community-list li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.sub {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #ccc;
+  opacity: 0.8;
+}
+
+.bio {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.platforms table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.platforms th,
+.platforms td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.platforms a {
+  color: #ffb347;
+  text-decoration: none;
+}
+
+.footer-info {
+  margin-top: 50px;
+  font-size: 0.8rem;
+  color: #777;
+}
