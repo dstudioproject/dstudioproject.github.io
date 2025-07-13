@@ -4,26 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>D|STUDIO PROJECT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
-
-    body {
+    /* === All Styles Inline === */
+    * {
       margin: 0;
       padding: 0;
-      background: #0a0a0a;
-      color: #ffffff;
-      font-family: 'Share Tech Mono', monospace;
-      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
-    video {
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    video#bg-video {
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -1;
+      pointer-events: none;
     }
 
     h1 {
@@ -33,7 +40,6 @@
       letter-spacing: 4px;
       margin-top: 60px;
       color: #ffffff;
-      position: relative;
       z-index: 2;
     }
 
@@ -67,8 +73,6 @@
       max-width: 900px;
       margin: 60px auto;
       padding: 0 20px;
-      position: relative;
-      z-index: 2;
     }
 
     h2 {
@@ -126,34 +130,31 @@
       font-size: 11px;
       color: #777;
       border-top: 1px solid #222;
-      position: relative;
-      z-index: 2;
     }
   </style>
 </head>
 <body>
 
-  <!-- VIDEO BACKGROUND -->
-  <video autoplay muted loop playsinline>
-    <source src="eye.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline preload="auto" id="bg-video">
+    <source src="eye.mp4" type="video/mp4" />
   </video>
 
   <!-- Hero Section -->
   <div class="hero-container">
     <div class="glow-circle"></div>
-    <h1>D｜STUDIO</h1>
-    <p class="subtitle"> AI Vision & Worldbuilding Unit</p>
+    <h1>DSTUDIPROJECT</h1>
+    <p class="subtitle"> AI Director • Worldbuilder</p>
   </div>
 
   <!-- About Section -->
   <section class="about">
-    <h2>_ABOUT_D|STUDIO</h2>
+    <h2>_WHO IS DSTUDIO?_</h2>
     <p>
-      D|STUDIO is not a studio. It is a transmission.<br>
-      A glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
-      Founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos to create visual language without compromise.<br>
-      The work resists templates. Every frame, every beat—layered, intentional, alive.
+      dstudioproject is a creative signal intercepted from the edge of imagination <br>
+      a glitch from the future, a cinematic signal crafted with instinct over instruction.<br><br>
+      founded by <strong>Dika Karan</strong>, this project merges code, culture, and chaos to create visual language without compromise.<br>
+      the work resists templates. Every frame, every beat—layered, intentional, alive.
     </p>
   </section>
 
@@ -161,14 +162,14 @@
   <section class="links">
     <h2>_SIGNAL_ACCESS</h2>
     <div class="link-grid">
-      <a href="https://instagram.com/dstudioproject">Instagram</a>
+      <a href="https://instagram.com/d_studioproject">Instagram</a>
       <a href="https://youtube.com/@d_studioproject">YouTube</a>
-      <a href="https://x.com/D_studioproject">X (Twitter)</a>
+      <a href="https://x.com/D_studioproject">X</a>
       <a href="https://threads.net/@d_studioproject">Threads</a>
-      <a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e">Chaos into Vision</a>
+      <a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e">Medium</a>
       <a href="https://linkedin.com/in/dika-karan-yudha">LinkedIn</a>
       <a href="https://ko-fi.com/dikakarans">Ko-fi</a>
-      <a href="https://lynk.id/dstudioproject">Lynk ID</a>
+      <a href="https://lynk.id/dstudioproject">LynkID</a>
     </div>
   </section>
 
@@ -195,13 +196,13 @@
   <section class="awards">
     <h2>_RECOGNITION_SIGIL</h2>
     <ul>
-      <li>Outstanding Award – WAN Break The Box Challenge</li>
-      <li>Best Visual Winner – Higgsfield Spotlight</li>
+      <li> Outstanding Award – WAN Break The Box Challenge</li>
+      <li> Best Visual Winner – Higgsfield Spotlight</li>
     </ul>
   </section>
 
   <footer>
-    <p>⸺ This interface is a cinematic anomaly ⸺</p>
+    <p>>© 2025 D|Studio Project</p>
   </footer>
 
 </body>
