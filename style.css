@@ -1,4 +1,4 @@
-/* D|STUDIO ARCHIVE STYLE — WHITE THEME */
+/* D|STUDIO ARCHIVE STYLE — DARK THEME */
 
 body {
   background-color: #0a0a0a;
@@ -14,7 +14,10 @@ body {
 
 .overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.75);
   z-index: -1;
 }
@@ -23,6 +26,8 @@ body {
   max-width: 900px;
   margin: auto;
 }
+
+/* HEADINGS */
 
 h1 {
   font-size: 32px;
@@ -46,6 +51,8 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+/* GENERAL TEXT STYLING */
 
 ul {
   list-style-type: none;
@@ -79,7 +86,7 @@ footer {
   font-size: 12px;
 }
 
-/* SIGNAL LINK TABLE STYLE */
+/* SIGNAL LINK TABLE */
 
 table {
   width: 100%;
@@ -87,7 +94,8 @@ table {
   margin-top: 30px;
 }
 
-th, td {
+th,
+td {
   border-bottom: 1px solid #444;
   padding: 12px 10px;
   text-align: left;
@@ -114,6 +122,8 @@ td a:hover {
   border-color: white;
 }
 
+/* SECTION PARAGRAPH & LISTS */
+
 section p {
   font-size: 14px;
   margin-top: 10px;
@@ -138,4 +148,3 @@ section ul li::before {
   left: 0;
   top: 0;
 }
-
