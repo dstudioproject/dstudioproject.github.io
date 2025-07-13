@@ -20,7 +20,9 @@
       position: relative;
     }
 
-    video#bg-video {
+    /* Both videos (desktop & mobile) */
+    #bg-video-desktop,
+    #bg-video-mobile {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,6 +30,27 @@
       height: 100vh;
       object-fit: cover;
       z-index: -2;
+    }
+
+    /* Show desktop video by default */
+    #bg-video-desktop {
+      display: block;
+    }
+
+    /* Hide mobile video by default */
+    #bg-video-mobile {
+      display: none;
+    }
+
+    /* Switch video source for mobile */
+    @media only screen and (max-width: 768px) {
+      #bg-video-desktop {
+        display: none;
+      }
+
+      #bg-video-mobile {
+        display: block;
+      }
     }
 
     .fade-overlay {
@@ -165,9 +188,17 @@
   </style>
 </head>
 <body>
-  <video autoplay muted loop playsinline preload="auto" id="bg-video">
-    <source src="dstudio_eye.mp4" type="video/mp4" />
+
+  <!-- Desktop video -->
+  <video autoplay muted loop playsinline preload="auto" id="bg-video-desktop">
+    <source src="kimono_3.mp4" type="video/mp4" />
   </video>
+
+  <!-- Mobile video -->
+  <video autoplay muted loop playsinline preload="auto" id="bg-video-mobile">
+    <source src="kimono_2.mp4" type="video/mp4" />
+  </video>
+
   <div class="fade-overlay"></div>
 
   <div class="hero-container">
@@ -196,7 +227,7 @@
       <a href="https://www.behance.net/dikakaran/projects">Behance</a>
       <a href="https://linkedin.com/in/dika-karan-yudha">LinkedIn</a>
       <a href="https://ko-fi.com/dikakarans">Ko-fi</a>
-      <a href="https://lynk.id/d_studioproject">LynkID</a>
+      <a href="https://lynk.id/dstudioproject">LynkID</a>
     </div>
   </section>
 
@@ -229,5 +260,6 @@
   <footer>
     <p>© 2025 DSTUDIOPROJECT</p>
   </footer>
+
 </body>
 </html>
