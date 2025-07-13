@@ -1,138 +1,115 @@
-/* Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* === Ritual Red + Mono Grid Style === */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
 
 body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #0e0e0e;
-  color: #f2f2f2;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Share Tech Mono', monospace;
   overflow-x: hidden;
 }
 
-/* Hero Video Section */
-.video-hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.video-hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  filter: brightness(0.6);
-}
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+h1 {
+  font-family: 'Playfair Display', serif;
   text-align: center;
-}
-
-.overlay-text h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
+  font-size: 56px;
+  letter-spacing: 4px;
+  margin-top: 60px;
   color: #ffffff;
-  text-shadow: 0 0 20px #ff0000;
+  position: relative;
+  z-index: 2;
 }
 
-.overlay-text p {
-  font-size: 1.2rem;
-  color: #ddd;
-  margin-top: 10px;
-  font-style: italic;
-}
-
-/* Section Titles */
-section h2 {
-  font-size: 1rem;
-  color: #ff4444;
-  font-family: monospace;
-  letter-spacing: 1px;
-  padding: 20px;
-  margin-top: 40px;
-  border-left: 3px solid #ff4444;
-}
-
-/* About Section */
-.about {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #ccc;
-}
-
-/* Links Grid */
-.links {
-  padding: 20px;
+.subtitle {
   text-align: center;
+  font-size: 14px;
+  color: #ff3c3c;
+  letter-spacing: 2px;
+  margin-top: -10px;
+}
+
+.hero-container {
+  background-image: url('https://i.imgur.com/MzCU0GS.jpg'); /* replace with abstract Japanese style bg */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 20px 60px;
+  position: relative;
+}
+
+.glow-circle {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#ff0000, transparent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+  z-index: 1;
+}
+
+section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  color: #ff3c3c;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff3c3c;
+  padding-left: 12px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d0d0d0;
 }
 
 .link-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-  margin-top: 10px;
-  padding: 0 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
 }
 
 .link-grid a {
-  text-decoration: none;
-  color: #fff;
-  background-color: #1a1a1a;
-  padding: 10px 15px;
+  background: #111;
+  padding: 12px 14px;
+  color: white;
   border: 1px solid #333;
-  transition: background-color 0.3s ease;
-  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 13px;
 }
 
 .link-grid a:hover {
-  background-color: #ff4444;
-  color: #000;
+  background: #ff3c3c;
+  color: black;
+  font-weight: bold;
 }
 
-/* Partners & Awards */
-.partners ul,
-.awards ul {
-  list-style: none;
-  padding: 10px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  text-align: center;
+ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-.partners li,
-.awards li {
-  background-color: #181818;
-  padding: 10px;
-  border: 1px solid #2a2a2a;
-  border-radius: 4px;
-  font-size: 0.9rem;
+ul li {
+  margin-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-/* Footer */
 footer {
   text-align: center;
-  padding: 30px 10px;
-  font-size: 0.85rem;
-  color: #888;
+  padding: 60px 20px;
+  font-size: 11px;
+  color: #777;
   border-top: 1px solid #222;
-  margin-top: 40px;
 }
