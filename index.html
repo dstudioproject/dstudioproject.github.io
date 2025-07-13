@@ -42,6 +42,23 @@
       z-index: -1;
     }
 
+    @keyframes dripBlood {
+      0% {
+        text-shadow: 0 0 0 red;
+        transform: translateY(0);
+      }
+      30% {
+        text-shadow: 0 4px 8px red, 0 8px 16px darkred;
+      }
+      60% {
+        text-shadow: 0 8px 16px red, 0 12px 32px darkred;
+      }
+      100% {
+        text-shadow: 0 12px 24px red, 0 24px 48px darkred;
+        transform: translateY(2px);
+      }
+    }
+
     h1 {
       font-family: 'Playfair Display', serif;
       text-align: center;
@@ -51,7 +68,7 @@
       color: #ffffff;
       z-index: 2;
       position: relative;
-      text-shadow: 0 0 15px red;
+      animation: dripBlood 4s ease-in-out forwards;
     }
 
     .subtitle {
