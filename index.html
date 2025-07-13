@@ -4,6 +4,111 @@
   <meta charset="UTF-8">
   <title>D|Studio Project</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: white;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 40px;
+      background-image: url('your-background.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+
+    .main {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      color: white;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: white;
+      border-bottom: 1px solid white;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px 0;
+      text-align: left;
+      font-size: 14px;
+      color: white;
+    }
+
+    th {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+      font-size: 14px;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .awards {
+      list-style-type: none;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .awards li a {
+      color: white;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .awards li a:hover {
+      color: #ffcc00;
+    }
+
+    footer {
+      margin-top: 80px;
+      color: white;
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
   <div class="overlay"></div>
@@ -11,73 +116,87 @@
     <h1>D|STUDIO PROJECT</h1>
     <p class="subtitle">AI Director · Worldbuilder</p>
 
-  <section>
-  <h2>666 / SIGNAL LINKS</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Platform</th>
-        <th>URL</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Instagram</td>
-        <td><a href="https://instagram.com/d_studioproject" target="_blank">instagram.com/d_studioproject</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>YouTube</td>
-        <td><a href="https://www.youtube.com/@D_studioproject" target="_blank">youtube.com/@D_studioproject</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>X</td>
-        <td><a href="https://x.com/D_studioproject" target="_blank">x.com/D_studioproject</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>Threads</td>
-        <td><a href="https://www.threads.com/@d_studioproject" target="_blank">threads.com/@d_studioproject</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>Medium</td>
-        <td><a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e" target="_blank">chaos into vision</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>LinkedIn</td>
-        <td><a href="https://www.linkedin.com/in/dika-karan-yudha-77641187/" target="_blank">linkedin.com/in/dika-karan-yudha</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>Ko-fi</td>
-        <td><a href="https://ko-fi.com/dikakarans" target="_blank">ko-fi.com/dikakarans</a></td>
-        <td>Online</td>
-      </tr>
-      <tr>
-        <td>Lynk ID</td>
-        <td><a href="https://lynk.id/d_studioproject" target="_blank">lynk.id/d_studioproject</a></td>
-        <td>Online</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+    <section>
+      <h2>666 / SIGNAL LINKS</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>URL</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Instagram</td>
+            <td><a href="https://instagram.com/d_studioproject" target="_blank">instagram.com/d_studioproject</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>YouTube</td>
+            <td><a href="https://www.youtube.com/@D_studioproject" target="_blank">youtube.com/@D_studioproject</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>X</td>
+            <td><a href="https://x.com/D_studioproject" target="_blank">x.com/D_studioproject</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>Threads</td>
+            <td><a href="https://www.threads.com/@d_studioproject" target="_blank">threads.com/@d_studioproject</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>Medium</td>
+            <td><a href="https://medium.com/@watchit.app/dika-turning-chaos-into-vision-and-vision-into-worlds-abf44bece80e" target="_blank">chaos into vision</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>LinkedIn</td>
+            <td><a href="https://www.linkedin.com/in/dika-karan-yudha-77641187/" target="_blank">linkedin.com/in/dika-karan-yudha</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>Ko-fi</td>
+            <td><a href="https://ko-fi.com/dikakarans" target="_blank">ko-fi.com/dikakarans</a></td>
+            <td>Online</td>
+          </tr>
+          <tr>
+            <td>Lynk ID</td>
+            <td><a href="https://lynk.id/d_studioproject" target="_blank">lynk.id/d_studioproject</a></td>
+            <td>Online</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<section>
-  <h2>777 / COLLABORATIONS</h2>
-  <p><strong>Creative Partnerships</strong>: Higgsfield · Hailuo · Topazlabs · ImagineArt · Wan · Vidu · Pollo AI · Flexclip · Pixverse · Synclabs · Basedlabs · Wavespeedai · Lovart</p>
-</section>
+    <section>
+      <h2>777 / COLLABORATIONS</h2>
+      <div class="collab-grid">
+        <div>• Higgsfield</div>
+        <div>• Hailuo</div>
+        <div>• Topazlabs</div>
+        <div>• ImagineArt</div>
+        <div>• Wan</div>
+        <div>• Vidu</div>
+        <div>• Pollo AI</div>
+        <div>• Flexclip</div>
+        <div>• Pixverse</div>
+        <div>• Sync</div>
+        <div>• Basedlabs</div>
+        <div>• Wavespeedai</div>
+        <div>• Lovart</div>
+      </div>
+    </section>
 
-<section>
-  <h2>888 / RECOGNITION</h2>
-  <ul>
-    <li>🏆 <strong><a href="https://discord.com/channels/1342754873384505414/1364141237795295283/1375411255929470986" target="_blank">Outstanding Award</a></strong> — WAN Break The Box Challenge</li>
-    <li>🏆 <strong><a href="https://www.instagram.com/p/DL3H-EliFE6/?img_index=2" target="_blank">Best Visual Winner</a></strong> — Higgsfield Spotlight</li>
-  </ul>
-</section>
+    <section>
+      <h2>888 / RECOGNITION</h2>
+      <ul class="awards">
+        <li>🏆 <a href="https://discord.com/channels/1342754873384505414/1364141237795295283/1375411255929470986" target="_blank">Outstanding Award</a> — WAN Break The Box Challenge</li>
+        <li>🏆 <a href="https://www.instagram.com/p/DL3H-EliFE6/?img_index=2" target="_blank">Best Visual Winner</a> — Higgsfield Spotlight</li>
+      </ul>
+    </section>
 
     <footer>
       <p>© 2025 D|Studio Project</p>
