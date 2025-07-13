@@ -1,229 +1,115 @@
-/* D|STUDIO ARCHIVE STYLE — DARK THEME */
+/* === Ritual Red + Mono Grid Style === */
 
-/* ✅ Fullscreen video background layer */
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -2;
-}
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Playfair+Display:wght@600&display=swap');
 
-.video-background video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ✅ Overlay layer to darken video for better text contrast */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: -1;
-}
-
-/* ✅ Base body setup */
 body {
-  background-color: #0a0a0a;
-  color: white;
-  font-family: 'Courier New', monospace;
   margin: 0;
-  padding: 40px;
+  padding: 0;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
 }
 
-.main {
-  max-width: 900px;
-  margin: auto;
-  position: relative;
-  z-index: 1;
-}
-
-/* ✅ Main title & subtitle */
 h1 {
-  font-size: 32px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 4px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 56px;
+  letter-spacing: 4px;
+  margin-top: 60px;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
 }
 
 .subtitle {
+  text-align: center;
   font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: white;
+  color: #ff3c3c;
+  letter-spacing: 2px;
+  margin-top: -10px;
 }
 
-/* ✅ Glitch animation for tagline */
-.hero-tagline {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 50px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #fff;
+.hero-container {
+  background-image: url('https://i.imgur.com/MzCU0GS.jpg'); /* replace with abstract Japanese style bg */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 20px 60px;
   position: relative;
-  display: inline-block;
 }
 
-.hero-tagline.glitch {
-  animation: glitch 2s infinite;
+.glow-circle {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#ff0000, transparent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+  z-index: 1;
 }
 
-@keyframes glitch {
-  0% { text-shadow: 2px 2px #ff00c1, -2px -2px #00fff9; }
-  20% { text-shadow: -1px 2px #ff00c1, 1px -1px #00fff9; }
-  40% { text-shadow: 2px -2px #ff00c1, -1px 1px #00fff9; }
-  60% { text-shadow: -2px -2px #ff00c1, 2px 2px #00fff9; }
-  80% { text-shadow: 2px 1px #ff00c1, -2px 1px #00fff9; }
-  100% { text-shadow: -1px -1px #ff00c1, 1px 1px #00fff9; }
+section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-/* ✅ Bio box styling */
-.bio-box {
-  border: 1px solid #ffffff44;
-  padding: 20px;
-  margin-bottom: 40px;
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 14px;
-  line-height: 1.6;
-  color: white;
-}
-
-.bio-box h3 {
-  margin-top: 0;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #aaa;
-  margin-bottom: 8px;
-}
-
-/* ✅ Section headers */
 h2 {
-  color: white;
-  border-bottom: 1px solid white;
-  padding-bottom: 5px;
-  margin-top: 40px;
-  font-size: 16px;
+  color: #ff3c3c;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff3c3c;
+  padding-left: 12px;
 }
 
-/* ✅ General text styling */
+p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d0d0d0;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.link-grid a {
+  background: #111;
+  padding: 12px 14px;
+  color: white;
+  border: 1px solid #333;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.link-grid a:hover {
+  background: #ff3c3c;
+  color: black;
+  font-weight: bold;
+}
+
 ul {
   list-style-type: none;
-  padding: 0;
+  padding-left: 0;
 }
 
-li {
-  margin: 10px 0;
-  font-size: 14px;
-  color: white;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  border-bottom: 1px solid white;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.active {
-  color: white;
-  font-style: italic;
+ul li {
+  margin-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 footer {
-  margin-top: 80px;
-  color: white;
-  font-size: 12px;
-}
-
-/* ✅ Signal archive table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-}
-
-th,
-td {
-  border-bottom: 1px solid #444;
-  padding: 12px 10px;
-  text-align: left;
-  font-size: 14px;
-  color: white;
-}
-
-th {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #aaa;
-}
-
-td a {
-  color: white;
-  text-decoration: none;
-  border-bottom: 1px solid white;
-}
-
-td a:hover {
-  color: white;
-  border-color: white;
-}
-
-/* ✅ Awards list */
-section p {
-  font-size: 14px;
-  margin-top: 10px;
-  color: white;
-  line-height: 1.6;
-}
-
-section ul {
-  padding-left: 20px;
-}
-
-section ul li {
-  list-style: none;
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 10px;
-}
-
-section ul li::before {
-  content: "🏆";
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-/* ✅ Collaborators grid */
-.collab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 6px 16px;
-  margin-top: 16px;
-  font-size: 14px;
-}
-
-/* ✅ Contact / Signal response */
-.contact-email {
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  color: #ffcc00;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 11px;
+  color: #777;
+  border-top: 1px solid #222;
 }
