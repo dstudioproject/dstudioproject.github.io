@@ -28,6 +28,7 @@
   z-index: -1;
 }
 
+/* ✅ Base body setup */
 body {
   background-color: #0a0a0a;
   color: white;
@@ -43,21 +44,68 @@ body {
   z-index: 1;
 }
 
-/* HEADINGS */
-
+/* ✅ Main title & subtitle */
 h1 {
   font-size: 32px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 4px;
 }
 
 .subtitle {
-  color: white;
   font-size: 14px;
-  margin-bottom: 40px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: white;
 }
 
+/* ✅ Glitch animation for tagline */
+.hero-tagline {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-tagline.glitch {
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px #ff00c1, -2px -2px #00fff9; }
+  20% { text-shadow: -1px 2px #ff00c1, 1px -1px #00fff9; }
+  40% { text-shadow: 2px -2px #ff00c1, -1px 1px #00fff9; }
+  60% { text-shadow: -2px -2px #ff00c1, 2px 2px #00fff9; }
+  80% { text-shadow: 2px 1px #ff00c1, -2px 1px #00fff9; }
+  100% { text-shadow: -1px -1px #ff00c1, 1px 1px #00fff9; }
+}
+
+/* ✅ Bio box styling */
+.bio-box {
+  border: 1px solid #ffffff44;
+  padding: 20px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 14px;
+  line-height: 1.6;
+  color: white;
+}
+
+.bio-box h3 {
+  margin-top: 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+/* ✅ Section headers */
 h2 {
   color: white;
   border-bottom: 1px solid white;
@@ -68,8 +116,7 @@ h2 {
   letter-spacing: 1px;
 }
 
-/* GENERAL TEXT STYLING */
-
+/* ✅ General text styling */
 ul {
   list-style-type: none;
   padding: 0;
@@ -102,8 +149,7 @@ footer {
   font-size: 12px;
 }
 
-/* SIGNAL LINK TABLE */
-
+/* ✅ Signal archive table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -138,8 +184,7 @@ td a:hover {
   border-color: white;
 }
 
-/* SECTION PARAGRAPH & LISTS */
-
+/* ✅ Awards list */
 section p {
   font-size: 14px;
   margin-top: 10px;
@@ -165,7 +210,16 @@ section ul li::before {
   top: 0;
 }
 
-/* ✅ CONTACT / SIGNAL RESPONSE STYLING */
+/* ✅ Collaborators grid */
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 6px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* ✅ Contact / Signal response */
 .contact-email {
   font-size: 16px;
   font-weight: bold;
