@@ -61,30 +61,12 @@
     }
 
     @keyframes glitchReveal {
-      0% {
-        opacity: 0;
-        transform: scale(0.95) skew(0.5deg);
-        text-shadow: none;
-      }
-      20% {
-        opacity: 0.4;
-        text-shadow: 2px 0 red, -2px 0 blue;
-      }
-      40% {
-        opacity: 0.7;
-        text-shadow: -2px 0 red, 2px 0 blue;
-      }
-      60% {
-        opacity: 1;
-        transform: scale(1);
-        text-shadow: 0 0 10px red;
-      }
-      80% {
-        text-shadow: 0 0 15px red;
-      }
-      100% {
-        text-shadow: 0 0 10px red;
-      }
+      0% { opacity: 0; transform: scale(0.95) skew(0.5deg); text-shadow: none; }
+      20% { opacity: 0.4; text-shadow: 2px 0 red, -2px 0 blue; }
+      40% { opacity: 0.7; text-shadow: -2px 0 red, 2px 0 blue; }
+      60% { opacity: 1; transform: scale(1); text-shadow: 0 0 10px red; }
+      80% { text-shadow: 0 0 15px red; }
+      100% { text-shadow: 0 0 10px red; }
     }
 
     h1 {
@@ -179,8 +161,9 @@
 
     .grid-3col {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px 20px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px 12px;
+      justify-items: start;
     }
 
     ul {
@@ -210,7 +193,6 @@
       border-top: 1px solid #222;
     }
 
-    /* Tambahan untuk sembunyikan play button iOS */
     video::-webkit-media-controls-start-playback-button {
       display: none !important;
       -webkit-appearance: none;
@@ -237,10 +219,9 @@
 
   <section class="about">
     <h2>_WHO IS DSTUDIO?</h2>
-     <p>DSTUDIO PROJECT is where artificial intelligence meets cinematic vision. Founded by Dika Karan, our mission is to push the limits of digital artistry and worldbuilding — crafting visuals and narratives that feel alive.</p>
-      <p>We create immersive digital experiences that blur the line between reality and imagination. From AI-driven art direction to virtual world creation and cinematic storytelling, every project is designed with precision, emotion, and cutting-edge technology.</p>
-      <p>Through bold experimentation and breakthrough techniques, DSTUDIO PROJECT has become a pioneer in the AI art space — collaborating with leading platforms worldwide and earning recognition in multiple international competitions.</p>
-    </div>
+    <p>DSTUDIO PROJECT is where artificial intelligence meets cinematic vision. Founded by Dika Karan, our mission is to push the limits of digital artistry and worldbuilding — crafting visuals and narratives that feel alive.</p>
+    <p>We create immersive digital experiences that blur the line between reality and imagination. From AI-driven art direction to virtual world creation and cinematic storytelling, every project is designed with precision, emotion, and cutting-edge technology.</p>
+    <p>Through bold experimentation and breakthrough techniques, DSTUDIO PROJECT has become a pioneer in the AI art space — collaborating with leading platforms worldwide and earning recognition in multiple international competitions.</p>
   </section>
 
   <section class="links">
@@ -258,58 +239,51 @@
   </section>
 
   <section class="ambassador">
-  <h2>_AMBASSADOR ROLE</h2>
-  <ul class="grid-3col">
-    <li>ImagineArt – Official Brand Ambassador (2025)</li>
-  </ul>
-</section>
-  
-  <<section class="partners">
-  <h2>_PARTNERSHIP</h2>
-  <ul class="grid-3col" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 20px;">
-    <li>Higgsfield</li>
-    <li>Hailuo AI</li>
-    <li>Topazlabs</li>
-    <li>ImagineArt</li>
+    <h2>_AMBASSADOR ROLE</h2>
+    <ul class="grid-3col">
+      <li>ImagineArt – Official Brand Ambassador (2025)</li>
+    </ul>
+  </section>
 
-    <li>Letzai</li>
-    <li>Vidu AI</li>
-    <li>Pixverse</li>
-    <li>Wan Alibaba</li>
+  <section class="community">
+    <h2>_COMMUNITY_REALM</h2>
+    <ul class="grid-3col">
+      <li><a href="https://discord.gg/Tp4a5sTm" target="_blank" style="color: #ffffff; text-decoration: underline;">Join us on Discord</a></li>
+      <li><a href="https://whatsapp.com/channel/0029VbAbJVJ2P59kGCZH3H0P" target="_blank" style="color: #ffffff; text-decoration: underline;">Join us on WhatsApp</a></li>
+    </ul>
+  </section>
 
-    <li>BasedLabs</li>
-    <li>Runware AI</li>
-    <li>WavespeedAI</li>
-    <li>Lovaart AI</li>
-
-    <li>Vestra AI</li>
-    <li>Ideogram</li>
-    <li>PixaraAi</li>
-    <li>Krea</li>
-
-    <li>Skyreels</li>
-    <li>Wondeshare</li>
-    <li>Atlabs</li>
-    <li>Flexclip</li>
-
-    <li>Synclabs</li>
-    <li>Pollo AI</li>
-    <li>Recraft</li>
-    <li>Viggle</li>
-
-    <li>Story.com</li>
-    <li>Pxpop</li>
-  </ul>
-</section>
-
-    <section class="community">
-  <h2>_COMMUNITY_REALM</h2>
-  <ul class="grid-3col">
-    <li><a href="https://discord.gg/Tp4a5sTm" target="_blank" style="color: #ffffff; text-decoration: underline;">Join us on Discord</a></li>
-    <li><a href="https://whatsapp.com/channel/0029VbAbJVJ2P59kGCZH3H0P" target="_blank" style="color: #ffffff; text-decoration: underline;">Join us on WhatsApp</a></li>
-  </ul>
-</section>
-
+  <section class="partners">
+    <h2>_PARTNERSHIP</h2>
+    <ul class="grid-3col">
+      <li>Higgsfield</li>
+      <li>Hailuo AI</li>
+      <li>Topazlabs</li>
+      <li>ImagineArt</li>
+      <li>Letzai</li>
+      <li>Vidu AI</li>
+      <li>Pixverse</li>
+      <li>Wan Alibaba</li>
+      <li>BasedLabs</li>
+      <li>Runware AI</li>
+      <li>WavespeedAI</li>
+      <li>Lovaart AI</li>
+      <li>Vestra AI</li>
+      <li>Ideogram</li>
+      <li>PixaraAi</li>
+      <li>Krea</li>
+      <li>Skyreels</li>
+      <li>Wondeshare</li>
+      <li>Atlabs</li>
+      <li>Flexclip</li>
+      <li>Synclabs</li>
+      <li>Pollo AI</li>
+      <li>Recraft</li>
+      <li>Viggle</li>
+      <li>Story.com</li>
+      <li>Pxpop</li>
+    </ul>
+  </section>
 
   <section class="awards">
     <h2>_RECOGNITION_SIGIL</h2>
